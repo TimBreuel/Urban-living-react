@@ -3,7 +3,7 @@ const PRODUCT = require("../models/productSchema");
 //////////////////////////////
 //ADD PRODUCT TO THE DATABASE
 function addProduct(name, category, price, color, imageS, imageL, description) {
-  return new Promise((reject, resolve) => {
+  return new Promise((resolve, reject) => {
     connect()
       .then(() => {
         const newProduct = new PRODUCT({
@@ -17,7 +17,7 @@ function addProduct(name, category, price, color, imageS, imageL, description) {
         });
         newProduct
           .save()
-          .then(() => resolve())
+          .then((data) => resolve(data))
           .catch((error) => {
             if (error.code === 11000) {
               reject("exist");

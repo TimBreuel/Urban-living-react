@@ -28,10 +28,12 @@ app.post("/addProduct", (req, res) => {
   } = req.body;
   mongooseProductModel
     .addProduct(name, category, price, color, imageS, imageL, description)
-    .then(() => {
+    .then((data) => {
+      res.send(data);
       console.log("Added to database");
     })
     .catch((error) => {
+      res.send(error);
       console.log(error);
     });
 });
