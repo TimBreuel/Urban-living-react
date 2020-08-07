@@ -1,12 +1,12 @@
 const connect = require("../models/connectionFn");
-const PRODUCT = require("../models/productSchema");
+const PRODUCTS = require("../models/productSchema");
 //////////////////////////////
 //ADD PRODUCT TO THE DATABASE
 function addProduct(name, category, price, color, imageS, imageL, description) {
   return new Promise((resolve, reject) => {
     connect()
       .then(() => {
-        const newProduct = new PRODUCT({
+        const newProduct = new PRODUCTS({
           name,
           category,
           price,
@@ -30,6 +30,19 @@ function addProduct(name, category, price, color, imageS, imageL, description) {
   });
 }
 
+/////////////////////////////////
+//GET ALL PRODUCTS FROM THE DATABASE
+function getALLProducts() {
+  return new Promise((resolve, reject) => {
+    connect().then(() => {
+      PRODUCTS.find()
+        .then((products) => resolve(products))
+        .catch((error) => reject(error));
+    });
+  });
+}
+
 module.exports = {
   addProduct,
+  getALLProducts,
 };

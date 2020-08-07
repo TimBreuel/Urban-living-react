@@ -1,41 +1,17 @@
 const express = require("express");
 const app = express();
-const mongooseProductModel = require("./modules/mongooseProductModel");
-
+const productsRoute = require("./routes/productsRoute");
 //////////////////////
 //MIDDLEWARE FUNCTIONS
 app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use("/products", productsRoute);
 
 /////////////
 //ROUTE HOME
-app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Hello Urban living react...");
-});
-
-////////////////////
-//ROUTE ADD PRODUCT
-app.post("/addProduct", (req, res) => {
-  const {
-    name,
-    category,
-    price,
-    color,
-    imageS,
-    imageL,
-    description,
-  } = req.body;
-  mongooseProductModel
-    .addProduct(name, category, price, color, imageS, imageL, description)
-    .then((data) => {
-      res.send(data);
-      console.log("Added to database");
-    })
-    .catch((error) => {
-      res.send(error);
-      console.log(error);
-    });
 });
 
 const PORT = process.env.PORT || 5000;
