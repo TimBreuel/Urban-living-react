@@ -80,12 +80,12 @@
   height: 100vh;
   width: 219px;
   left: -220px;
-  background-color: #4d4954;
+  background-color: #ffe5db;
   z-index: 999;
 }
 
 #menu > ul > li {
-  color: #ffe5db;
+  color: #4d4954;
   text-decoration: none;
   padding: 5px;
   padding-left: 20px;
@@ -94,27 +94,27 @@
 }
 
 #menu > ul > li:nth-child(1) {
-  color: #ffe5db;
+  color: #4d4954;
   text-decoration: none;
   padding: 5px;
   padding-left: 10px;
-  border-bottom: 1px solid #ffe5db;
+  border-bottom: 1px solid #4d4954;
   padding-top: 15px;
   font-size: 19px;
 }
 
 #menu > ul > li:nth-child(6) {
-  color: #ffe5db;
+  color: #4d4954;
   text-decoration: none;
   padding: 5px;
   padding-left: 10px;
-  border-bottom: 1px solid #ffe5db;
+  border-bottom: 1px solid #4d4954;
   padding-top: 15px;
   font-size: 19px;
 }
 
 #menu > ul > li > a {
-  color: #ffe5db;
+  color: #4d4954;
   text-decoration: none;
 }
 
@@ -196,10 +196,6 @@
   padding: 0 !important;
 }
 
-/* .btn-success {
-    padding: 5px 10px;
-  } */
-
 /* ===== END MENU ===== */
 
 /* ===== SHOPPING CARD ===== */
@@ -207,7 +203,7 @@
 #shoping-card {
   width: 299px;
   height: 100vh;
-  background-color: #4d4954;
+  background-color: #ffe5db;
   position: fixed;
   right: -300px;
   top: 75px;
@@ -217,20 +213,20 @@
 #shoping-card > h3 {
   padding: 15px 0 15px 15px;
   font-size: 26px;
-  color: #ffe5db;
-  border-bottom: 2px solid #ffe5db;
+  color: #4d4954;
+  border-bottom: 2px solid #4d4954;
 }
 
 #total {
   position: absolute;
-  color: #ffe5db;
+  color: #4d4954;
   padding: 20px;
   font-size: 20px;
   font-weight: 400;
   margin-bottom: 0px;
-  border-top: 1px solid #ffe5db;
+  border-top: 1px solid #4d4954;
   bottom: 100px;
-  background-color: #4d4954;
+  background-color: #ffe5db;
 }
 
 .buy-now {
@@ -240,16 +236,16 @@
 .btn {
   width: 265px;
   height: 50px;
-  background-color: #4d4954;
-  color: #ffe5db;
+  background-color: #ffe5db;
+  color: #4d4954;
   border-radius: 5px;
   font-size: 16px;
 }
 
 .btn:hover {
   transition-duration: 1s;
-  background-color: #ffe5db;
-  color: #4d4954;
+  background-color: #4d4954;
+  color: #ffe5db;
 }
 
 .shopping-card-container {
