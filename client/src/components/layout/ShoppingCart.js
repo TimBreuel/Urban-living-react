@@ -3,16 +3,16 @@ import React, { Fragment } from "react";
 function ShoppingCart() {
   return (
     <Fragment>
-      <div id="shoping-card" class="slide-back-cart">
+      <div id="shoping-card" className="slide-back-cart">
         <h3>Shoping Cart</h3>
-        <ul class="shopping-card-container"></ul>
+        <ul className="shopping-card-container"></ul>
         <div id="total">
           <span>Total cost: </span>
-          <span class="fl-r">$</span>
-          <span id="totalCost" class="fl-r">
+          <span className="fl-r">$</span>
+          <span id="totalCost" className="fl-r">
             0
           </span>
-          <button class="buy-now btn">BUY NOW!</button>
+          <button className="buy-now btn">BUY NOW!</button>
         </div>
       </div>
     </Fragment>

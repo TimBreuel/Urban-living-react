@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/TimBreuel/Urban-living-react#readme",
   "dependencies": {
+    "axios": "^0.19.2",
     "express": "^4.17.1",
     "mongoose": "^5.9.27",
     "password-hash": "^1.2.2"
