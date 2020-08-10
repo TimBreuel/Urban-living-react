@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function NavigationMenu() {
   return (
@@ -8,19 +9,19 @@ function NavigationMenu() {
       </div>
       <ul>
         <li id="seeAll">
-          <a href="!#">Categories</a>
+          <Link to="/">Categories</Link>
         </li>
         <li id="chairs">
-          <a href="!#">Chairs</a>
+          <Link to="/products/chairs">Chairs</Link>
         </li>
         <li id="couches">
-          <a href="!#">Couches</a>
+          <Link to="/products/couches">Couches</Link>
         </li>
         <li id="lamps">
-          <a href="!#">Lamps</a>
+          <Link to="/products/lamps">Lamps</Link>
         </li>
         <li id="tables">
-          <a href="!#">Tables</a>
+          <Link to="/products/tables">Tables</Link>
         </li>
         <li>
           <a href="!#">About UL</a>

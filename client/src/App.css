@@ -240,10 +240,11 @@
   color: #4d4954;
   border-radius: 5px;
   font-size: 16px;
+  border: 1px solid #4d4954;
 }
 
 .btn:hover {
-  transition-duration: 1s;
+  transition-duration: 0.5s;
   background-color: #4d4954;
   color: #ffe5db;
 }
