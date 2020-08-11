@@ -36,7 +36,6 @@ function getALLProducts() {
   return new Promise((resolve, reject) => {
     connect().then(() => {
       PRODUCTS.find()
-        .toArray()
         .then((products) => resolve(products))
         .catch((error) => reject(error));
     });

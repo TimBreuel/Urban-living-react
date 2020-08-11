@@ -19,7 +19,7 @@ function connect() {
           useNewUrlParser: true,
         })
         .then(() => resolve())
-        .catch((error) => reject());
+        .catch((error) => reject(error));
     }
   });
 }

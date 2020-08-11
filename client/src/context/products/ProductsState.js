@@ -1,7 +1,6 @@
 import React, { useReducer } from "react";
 import ProductsContext from "./ProductsContext";
 import ProductsReducer from "./ProductsReducer";
-import axios from "axios";
 import { GET_PRODUCTS } from "../types";
 
 const ProductsState = (props) => {
@@ -14,11 +13,12 @@ const ProductsState = (props) => {
   //GET ALL PRODUCTS
   const getAllProducts = async () => {
     try {
-      const res = await axios.get("/products");
-      console.log(res);
-      dispatch({ type: GET_PRODUCTS, payload: res.data });
+      const res = await fetch("/products");
+      const data = await res.json();
+      console.log("After fetch:", data);
+      dispatch({ type: GET_PRODUCTS, payload: data });
     } catch (error) {
-      console.log(error);
+      console.log("Catch err:", error.message);
     }
   };
 

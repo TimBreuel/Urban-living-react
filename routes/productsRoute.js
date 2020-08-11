@@ -10,7 +10,8 @@ products.get("/", (req, res) => {
   mongooseProductModel
     .getALLProducts()
     .then((products) => {
-      res.send(products);
+      console.log(products);
+      res.json(products);
     })
     .catch((error) => console.log(error));
 });
