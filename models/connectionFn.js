@@ -14,9 +14,10 @@ function connect() {
     } else {
       mongoose
         .connect(connectionString, {
-          useUnifiedTopology: true,
-          useCreateIndex: true,
           useNewUrlParser: true,
+          useCreateIndex: true,
+          useFindAndModify: false,
+          useUnifiedTopology: true,
         })
         .then(() => resolve())
         .catch((error) => reject(error));

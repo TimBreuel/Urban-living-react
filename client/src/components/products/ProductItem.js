@@ -1,7 +1,11 @@
 import React, { Fragment } from "react";
 
 function ProductItem({ product }) {
-  const { imageS, name, price } = product;
+  const { imageS, name, price, _id } = product;
+  const seeDetails = (id) => {
+    {
+    }
+  };
   return (
     <Fragment>
       <div className="card">
@@ -14,8 +18,12 @@ function ProductItem({ product }) {
           </button>
         </div>
       </div>
-      <div class="details">
-        <i id="btn-details" class="open-details fas fa-plus"></i>
+      <div className="details">
+        <i
+          id="btn-details"
+          className="open-details fas fa-plus"
+          onClick={() => seeDetails(_id)}
+        ></i>
       </div>
     </Fragment>
   );

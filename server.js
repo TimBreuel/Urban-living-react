@@ -1,12 +1,13 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const productsRoute = require("./routes/productsRoute");
 const userRoute = require("./routes/userRoute");
 //////////////////////
 //MIDDLEWARE FUNCTIONS
-app.use(express.static(__dirname + "/public"));
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app.use(express.json({ extended: false }));
 app.use("/products", productsRoute);
 app.use("/user", userRoute);
 
@@ -15,6 +16,15 @@ app.use("/user", userRoute);
 app.get("/", (req, res) => {
   res.send("Hello Urban living react home...");
 });
+
+//SERVE static assets in Production
+if (process.env.NODE_ENV === "production") {
+  //Set static folder
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

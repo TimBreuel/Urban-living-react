@@ -16,20 +16,18 @@ function Products() {
   return (
     <Fragment>
       <Headline txt="Our Products"></Headline>
-      <div
-        id="product-container"
+      <TransitionGroup
         className="container container-flex slide-back slide-back-cart"
+        id="product-container"
       >
-        <TransitionGroup>
-          {products.map((product) => {
-            return (
-              <CSSTransition key={product._id} timeout={500} classNames="item">
-                <ProductItem product={product}></ProductItem>
-              </CSSTransition>
-            );
-          })}
-        </TransitionGroup>
-      </div>
+        {products.map((product) => {
+          return (
+            <CSSTransition key={product._id} timeout={500} classNames="item">
+              <ProductItem product={product}></ProductItem>
+            </CSSTransition>
+          );
+        })}
+      </TransitionGroup>
     </Fragment>
   );
 }
