@@ -1,13 +1,12 @@
 import React, { Fragment, useContext, useEffect } from "react";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Headline from "./Headline";
 import ProductsContext from "../../context/products/ProductsContext";
-import ProductItem from "./ProductItem";
+import ProductItems from "./ProductItems";
 
-function Products() {
+function Products(props) {
   const productsContext = useContext(ProductsContext);
   const { products, getAllProducts } = productsContext;
-  console.log(productsContext);
+
   useEffect(() => {
     getAllProducts();
     //eslint-disable-next-line
@@ -16,18 +15,7 @@ function Products() {
   return (
     <Fragment>
       <Headline txt="Our Products"></Headline>
-      <TransitionGroup
-        className="container container-flex slide-back slide-back-cart"
-        id="product-container"
-      >
-        {products.map((product) => {
-          return (
-            <CSSTransition key={product._id} timeout={500} classNames="item">
-              <ProductItem product={product}></ProductItem>
-            </CSSTransition>
-          );
-        })}
-      </TransitionGroup>
+      <ProductItems products={products}></ProductItems>
     </Fragment>
   );
 }

@@ -7,6 +7,7 @@ import axios from "axios";
 const ProductsState = (props) => {
   const initalState = {
     products: [],
+    headline: null,
   };
   const [state, dispatch] = useReducer(ProductsReducer, initalState);
 
@@ -24,10 +25,18 @@ const ProductsState = (props) => {
   ////////////////////////
   //GET CATEGORY PRODUCTS
   const getProductsCategory = async (category) => {
-    console.log("CATEGORY:", category);
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
     try {
-      const res = await axios.get(`http://localhost:5000/products/${category}`);
-      console.log(res.data);
+      const res = await axios.post(
+        "http://localhost:5000/products/category",
+        { category: category },
+        config
+      );
+      // console.log("REACT RES:", res.data);
       dispatch({ type: GET_PRODUCTS_CATEGORY, payload: res.Data });
     } catch (error) {}
   };

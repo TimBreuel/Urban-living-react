@@ -3,8 +3,8 @@ import "./App.css";
 import Navigation from "./components/layout/Navigation";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Products from "./components/products/Products";
-import ProductsState from "./context/products/ProductsState";
 import ProductsCategory from "./components/products/ProductsCategory";
+import ProductsState from "./context/products/ProductsState";
 
 function App() {
   return (
@@ -18,12 +18,31 @@ function App() {
             <Route
               exact
               path="/products/chairs"
-              component={ProductsCategory}
-              category="chairs"
+              component={() => (
+                <ProductsCategory category="chair"></ProductsCategory>
+              )}
             ></Route>
-            <Route exact path="/products/couches" component="couches"></Route>
-            <Route exact path="/products/lamps" component="lamps"></Route>
-            <Route exact path="/products/tables" component="tables"></Route>
+            <Route
+              exact
+              path="/products/couches"
+              component={() => (
+                <ProductsCategory category="chouch"></ProductsCategory>
+              )}
+            ></Route>
+            <Route
+              exact
+              path="/products/lamps"
+              component={() => (
+                <ProductsCategory category="lamp"></ProductsCategory>
+              )}
+            ></Route>
+            <Route
+              exact
+              path="/products/tables"
+              component={() => (
+                <ProductsCategory category="table"></ProductsCategory>
+              )}
+            ></Route>
           </Switch>
         </div>
       </Router>

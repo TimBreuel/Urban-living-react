@@ -48,7 +48,9 @@ function getProductsCategory(category) {
   return new Promise((resolve, reject) => {
     connect().then(() => {
       PRODUCTS.find({ category: category })
-        .then((products) => resolve(products))
+        .then((products) => {
+          resolve(products);
+        })
         .catch((error) => reject(error));
     });
   });

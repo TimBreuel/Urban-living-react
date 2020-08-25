@@ -10,8 +10,6 @@ products.get("/", (req, res) => {
   mongooseProductModel
     .getALLProducts()
     .then((products) => {
-      // console.log("Backend SEND:");
-      // console.log(products);
       res.json(products);
     })
     .catch((error) => console.log(error));
@@ -19,13 +17,13 @@ products.get("/", (req, res) => {
 
 /////////////////////////
 //ROUTE GET ALL PRODUCTS
-products.get("/:category", (req, res) => {
-  const category = req.params.category;
-  console.log("PARAMS:", category);
+products.post("/category", (req, res) => {
+  const { category } = req.body;
+  // console.log(category);
   mongooseProductModel
     .getProductsCategory(category)
     .then((products) => {
-      console.log(products);
+      // console.log("Hello from get:", products);
       res.json(products);
     })
     .catch((error) => console.log(error));
