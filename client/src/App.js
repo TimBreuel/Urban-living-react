@@ -14,7 +14,11 @@ function App() {
           <Navigation></Navigation>
 
           <Switch>
-            <Route exact path="/" component={Products}></Route>
+            <Route
+              exact
+              path="/"
+              component={() => <Products></Products>}
+            ></Route>
             <Route
               exact
               path="/products/chairs"
