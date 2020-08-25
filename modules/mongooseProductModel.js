@@ -35,7 +35,19 @@ function addProduct(name, category, price, color, imageS, imageL, description) {
 function getALLProducts() {
   return new Promise((resolve, reject) => {
     connect().then(() => {
-      PRODUCTS.find()
+      PRODUCTS.find({})
+        .then((products) => resolve(products))
+        .catch((error) => reject(error));
+    });
+  });
+}
+
+/////////////////////////////////
+//GET ALL PRODUCTS FROM THE DATABASE
+function getProductsCategory(category) {
+  return new Promise((resolve, reject) => {
+    connect().then(() => {
+      PRODUCTS.find({ category: category })
         .then((products) => resolve(products))
         .catch((error) => reject(error));
     });
@@ -45,4 +57,5 @@ function getALLProducts() {
 module.exports = {
   addProduct,
   getALLProducts,
+  getProductsCategory,
 };

@@ -17,6 +17,20 @@ products.get("/", (req, res) => {
     .catch((error) => console.log(error));
 });
 
+/////////////////////////
+//ROUTE GET ALL PRODUCTS
+products.get("/:category", (req, res) => {
+  const category = req.params.category;
+  console.log("PARAMS:", category);
+  mongooseProductModel
+    .getProductsCategory(category)
+    .then((products) => {
+      console.log(products);
+      res.json(products);
+    })
+    .catch((error) => console.log(error));
+});
+
 ////////////////////
 //ROUTE ADD PRODUCT
 products.post("/addProduct", (req, res) => {

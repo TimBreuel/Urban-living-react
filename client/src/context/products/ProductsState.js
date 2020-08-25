@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import ProductsContext from "./ProductsContext";
 import ProductsReducer from "./ProductsReducer";
-import { GET_PRODUCTS } from "../types";
+import { GET_PRODUCTS, GET_PRODUCTS_CATEGORY } from "../types";
 import axios from "axios";
 
 const ProductsState = (props) => {
@@ -13,22 +13,23 @@ const ProductsState = (props) => {
   ///////////////////
   //GET ALL PRODUCTS
   const getAllProducts = async () => {
-    // let config = {
-    //   headers: {
-    //     "Access-Control-Allow-Origin": "*",
-    //     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-    //     "Content-Type": "application/x-www-form-urlencoded",
-    //   },
-    // };
     try {
       const res = await axios.get("http://localhost:5000/products");
-
-      // console.log("After fetch:", res.data);
-      // console.log(res);
       dispatch({ type: GET_PRODUCTS, payload: res.data });
     } catch (error) {
       console.log("Catch err:", error);
     }
+  };
+
+  ////////////////////////
+  //GET CATEGORY PRODUCTS
+  const getProductsCategory = async (category) => {
+    console.log("CATEGORY:", category);
+    try {
+      const res = await axios.get(`http://localhost:5000/products/${category}`);
+      console.log(res.data);
+      dispatch({ type: GET_PRODUCTS_CATEGORY, payload: res.Data });
+    } catch (error) {}
   };
 
   return (
@@ -36,6 +37,7 @@ const ProductsState = (props) => {
       value={{
         products: state.products,
         getAllProducts,
+        getProductsCategory,
       }}
     >
       {props.children}
