@@ -5,10 +5,7 @@ import ProductItem from "./ProductItem";
 function ProductItems({ products }) {
   return (
     <Fragment>
-      <TransitionGroup
-        className="container container-flex slide-back slide-back-cart"
-        id="product-container"
-      >
+      <TransitionGroup className="container container-flex slide-back slide-back-cart">
         {products.map((product) => {
           return (
             <CSSTransition key={product._id} timeout={500} classNames="item">
