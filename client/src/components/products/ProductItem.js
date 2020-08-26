@@ -3,14 +3,23 @@ import ProductDetails from "./ProductDetails";
 
 function ProductItem({ product }) {
   const [details, setDetails] = useState(false);
+
   const { imageS, name, price } = product;
+
   const handleClickDetails = () => {
-    console.log("CLICK DETAILS");
     setDetails(true);
+  };
+  const handleClickDetailsBack = () => {
+    setDetails(false);
   };
   return (
     <Fragment>
-      {details ? <ProductDetails product={product}></ProductDetails> : null}
+      {details ? (
+        <ProductDetails
+          product={product}
+          renderBack={handleClickDetailsBack}
+        ></ProductDetails>
+      ) : null}
       <div className="card">
         <img src={imageS} alt="" className="image-small" />
         <h4 className="article-name">{name}</h4>
@@ -22,9 +31,7 @@ function ProductItem({ product }) {
         </div>
       </div>
       <div className="details">
-        <i id="btn-details" className="open-details fas fa-plus">
-          TEST
-        </i>
+        <i id="btn-details" className="open-details fas fa-plus"></i>
       </div>
     </Fragment>
   );
