@@ -1,13 +1,19 @@
 import React, { useReducer } from "react";
 import ProductsContext from "./ProductsContext";
 import ProductsReducer from "./ProductsReducer";
-import { GET_PRODUCTS, GET_PRODUCTS_CATEGORY, SET_DETAILS } from "../types";
+import {
+  GET_PRODUCTS,
+  GET_PRODUCTS_CATEGORY,
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  GET_ALL_CART,
+} from "../types";
 import axios from "axios";
 
 const ProductsState = (props) => {
   const initalState = {
     products: [],
-    details: false,
+    shoppingCart: [],
   };
   const [state, dispatch] = useReducer(ProductsReducer, initalState);
 
@@ -41,12 +47,17 @@ const ProductsState = (props) => {
     } catch (error) {}
   };
 
-  /////////////////////////
-  //SET AND REMOVE DETAILS
-  const seeDetails = (boolean) => {
-    dispatch({ type: SET_DETAILS, payload: boolean });
-  };
+  /////////////////////////////
+  //GET ALL ARTICELS FROM CART
+  const getAllArticelsForCart = () => {};
 
+  ////////////////////////
+  //ADD A ARTICEL TO CART
+  const addArticelToCart = () => {};
+
+  //////////////////////////////
+  //REMOVE AN ARTICLE FROM CART
+  const removeArticelFromCart = () => {};
   return (
     <ProductsContext.Provider
       value={{
@@ -54,7 +65,9 @@ const ProductsState = (props) => {
         details: state.details,
         getAllProducts,
         getProductsCategory,
-        seeDetails,
+        getAllArticelsForCart,
+        addArticelToCart,
+        removeArticelFromCart,
       }}
     >
       {props.children}
