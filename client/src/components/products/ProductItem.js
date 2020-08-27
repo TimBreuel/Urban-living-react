@@ -3,6 +3,7 @@ import ProductDetails from "./ProductDetails";
 
 function ProductItem({ product }) {
   const [details, setDetails] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const { imageS, name, price } = product;
 
@@ -11,6 +12,13 @@ function ProductItem({ product }) {
   };
   const handleClickDetailsBack = () => {
     setDetails(false);
+  };
+
+  const handleClickToCart = () => {
+    setSuccess(true);
+    setTimeout(() => {
+      setSuccess(false);
+    }, 1000);
   };
   return (
     <Fragment>
@@ -25,13 +33,18 @@ function ProductItem({ product }) {
         <h4 className="article-name">{name}</h4>
         <div className="article-price">
           Price: <span className="article-price-num">{price}</span> €
-          <button className="btn-card btn-add" onClick={handleClickDetails}>
-            <i className="fas fa-cart-plus btn-success btn-add"></i>
+          <button
+            className={
+              success ? "btn-card btn-add successAdd" : "btn-card btn-add"
+            }
+            onClick={handleClickToCart}
+          >
+            <i className="fas fa-cart-plus"></i>
           </button>
         </div>
-      </div>
-      <div className="details">
-        <i id="btn-details" className="open-details fas fa-plus"></i>
+        <div className="details" onClick={handleClickDetails}>
+          <i id="btn-details" className="open-details fas fa-plus"></i>
+        </div>
       </div>
     </Fragment>
   );
