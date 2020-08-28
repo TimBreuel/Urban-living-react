@@ -3,10 +3,11 @@ import ProductsContext from "./ProductsContext";
 import ProductsReducer from "./ProductsReducer";
 import {
   GET_PRODUCTS,
-  GET_PRODUCTS_CATEGORY,
   ADD_TO_CART,
   REMOVE_FROM_CART,
   GET_ALL_CART,
+  FILTER_PRODUCTS,
+  CLEAR_FILTER,
 } from "../types";
 import axios from "axios";
 
@@ -14,6 +15,7 @@ const ProductsState = (props) => {
   const initalState = {
     products: [],
     shoppingCart: [],
+    filtered: null,
   };
   const [state, dispatch] = useReducer(ProductsReducer, initalState);
 
@@ -28,23 +30,17 @@ const ProductsState = (props) => {
     }
   };
 
-  ////////////////////////
-  //GET CATEGORY PRODUCTS
-  const getProductsCategory = async (category) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    try {
-      const res = await axios.post(
-        "http://localhost:5000/products/category",
-        { category: category },
-        config
-      );
-      // console.log("REACT RES:", res.data);
-      dispatch({ type: GET_PRODUCTS_CATEGORY, payload: res.Data });
-    } catch (error) {}
+  ////////////////////
+  //FILTERED PRODUCTS
+  const filteredProducts = (text) => {
+    console.log("PAYLOAD TXT:", text);
+    dispatch({ type: FILTER_PRODUCTS, payload: text });
+  };
+
+  ///////////////
+  //CLEAR FILTER
+  const clearFilter = () => {
+    dispatch({ type: CLEAR_FILTER });
   };
 
   /////////////////////////////
@@ -63,8 +59,10 @@ const ProductsState = (props) => {
       value={{
         products: state.products,
         details: state.details,
+        filtered: state.filtered,
         getAllProducts,
-        getProductsCategory,
+        filteredProducts,
+        clearFilter,
         getAllArticelsForCart,
         addArticelToCart,
         removeArticelFromCart,

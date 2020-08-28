@@ -3,6 +3,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import ProductItem from "./ProductItem";
 
 function ProductItems({ products }) {
+  console.log("ITEMS:", products);
   return (
     <Fragment>
       <TransitionGroup className="container container-flex slide-back slide-back-cart">

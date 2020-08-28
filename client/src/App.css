@@ -70,6 +70,17 @@
   display: block;
 }
 
+.filter {
+  border: 1px solid #4d4954;
+  border-radius: 5px;
+  height: 45px;
+  background-color: #ffe5db;
+  position: absolute;
+  left: 80px;
+  top: 13px;
+  padding-left: 10px;
+}
+
 /* ===== END HEADER ===== */
 
 /* ===== MENU ===== */
@@ -274,7 +285,7 @@
 }
 
 .container {
-  padding: 20px 50px 120px 50px;
+  padding: 20px 10px 120px 10px;
 }
 
 .container-flex {
@@ -304,7 +315,7 @@
 }
 
 .image-small {
-  width: 200px;
+  width: 198px;
   height: 200px;
   border-radius: 5px 5px 0 0;
 }

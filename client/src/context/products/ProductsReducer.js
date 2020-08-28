@@ -1,4 +1,9 @@
-import { GET_PRODUCTS, GET_PRODUCTS_CATEGORY } from "../types";
+import {
+  GET_PRODUCTS,
+  GET_PRODUCTS_CATEGORY,
+  FILTER_PRODUCTS,
+  CLEAR_FILTER,
+} from "../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -10,7 +15,24 @@ export default (state, action) => {
     case GET_PRODUCTS_CATEGORY:
       return {
         ...state,
-        products: action.payload,
+        productsCategory: action.payload,
+      };
+    case FILTER_PRODUCTS:
+      return {
+        ...state,
+        filtered: state.products.filter((product) => {
+          const regex = new RegExp(`${action.payload}`, "gi");
+          return (
+            product.category.match(regex) ||
+            product.name.match(regex) ||
+            product.color.match(regex)
+          );
+        }),
+      };
+    case CLEAR_FILTER:
+      return {
+        ...state,
+        filtered: null,
       };
 
     default:

@@ -3,19 +3,25 @@ import Headline from "./Headline";
 import ProductsContext from "../../context/products/ProductsContext";
 import ProductItems from "./ProductItems";
 
-function Products(props) {
+function Products() {
   const productsContext = useContext(ProductsContext);
-  const { products, getAllProducts } = productsContext;
+  const { products, getAllProducts, filtered } = productsContext;
 
   useEffect(() => {
     getAllProducts();
     //eslint-disable-next-line
   }, []);
-
+  console.log("PRODUCT:", products);
+  console.log("FILTERED:", filtered);
   return (
     <Fragment>
       <Headline txt="Our Products"></Headline>
-      <ProductItems products={products}></ProductItems>
+      {/* <ProductItems products={products}></ProductItems> */}
+      {filtered !== null ? (
+        <ProductItems products={filtered}></ProductItems>
+      ) : (
+        <ProductItems products={products}></ProductItems>
+      )}
     </Fragment>
   );
 }
