@@ -1,7 +1,10 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useContext } from "react";
 import ProductDetails from "./ProductDetails";
+import ProductsContext from "../../context/products/ProductsContext";
 
 function ProductItem({ product }) {
+  const productsContext = useContext(ProductsContext);
+  const { addArticelToCart } = productsContext;
   const [details, setDetails] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -14,8 +17,9 @@ function ProductItem({ product }) {
     setDetails(false);
   };
 
-  const handleClickToCart = () => {
+  const handleClickToCart = (product) => {
     setSuccess(true);
+    addArticelToCart(product);
     setTimeout(() => {
       setSuccess(false);
     }, 1000);
@@ -37,7 +41,7 @@ function ProductItem({ product }) {
             className={
               success ? "btn-card btn-add successAdd" : "btn-card btn-add"
             }
-            onClick={handleClickToCart}
+            onClick={() => handleClickToCart(product)}
           >
             <i className="fas fa-cart-plus"></i>
           </button>

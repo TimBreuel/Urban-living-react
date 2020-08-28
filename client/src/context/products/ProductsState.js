@@ -44,21 +44,27 @@ const ProductsState = (props) => {
 
   /////////////////////////////
   //GET ALL ARTICELS FROM CART
-  const getAllArticelsForCart = () => {};
+  const getAllArticelsForCart = () => {
+    dispatch({ type: GET_ALL_CART });
+  };
 
   ////////////////////////
   //ADD A ARTICEL TO CART
-  const addArticelToCart = () => {};
+  const addArticelToCart = (product) => {
+    dispatch({ type: ADD_TO_CART, payload: product });
+  };
 
   //////////////////////////////
   //REMOVE AN ARTICLE FROM CART
-  const removeArticelFromCart = () => {};
+  const removeArticelFromCart = (_id) => {
+    dispatch({ type: REMOVE_FROM_CART, payload: _id });
+  };
   return (
     <ProductsContext.Provider
       value={{
         products: state.products,
-        details: state.details,
         filtered: state.filtered,
+        shoppingCart: state.shoppingCart,
         getAllProducts,
         filteredProducts,
         clearFilter,

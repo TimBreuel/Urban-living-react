@@ -3,6 +3,9 @@ import {
   GET_PRODUCTS_CATEGORY,
   FILTER_PRODUCTS,
   CLEAR_FILTER,
+  ADD_TO_CART,
+  GET_ALL_CART,
+  REMOVE_FROM_CART,
 } from "../types";
 
 export default (state, action) => {
@@ -33,6 +36,23 @@ export default (state, action) => {
       return {
         ...state,
         filtered: null,
+      };
+    case ADD_TO_CART:
+      return {
+        ...state,
+        shoppingCart: [action.payload, ...state.shoppingCart],
+      };
+    case GET_ALL_CART:
+      return {
+        ...state,
+        shoppingCart: [...state.shoppingCart],
+      };
+    case REMOVE_FROM_CART:
+      return {
+        ...state,
+        shoppingCart: state.shoppingCart.filter(
+          (article) => article._id !== action.payload
+        ),
       };
 
     default:
