@@ -11,12 +11,9 @@ function Products() {
     getAllProducts();
     //eslint-disable-next-line
   }, []);
-  console.log("PRODUCT:", products);
-  console.log("FILTERED:", filtered);
   return (
     <Fragment>
       <Headline txt="Our Products"></Headline>
-      {/* <ProductItems products={products}></ProductItems> */}
       {filtered !== null ? (
         <ProductItems products={filtered}></ProductItems>
       ) : (

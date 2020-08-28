@@ -33,7 +33,6 @@ const ProductsState = (props) => {
   ////////////////////
   //FILTERED PRODUCTS
   const filteredProducts = (text) => {
-    console.log("PAYLOAD TXT:", text);
     dispatch({ type: FILTER_PRODUCTS, payload: text });
   };
 
