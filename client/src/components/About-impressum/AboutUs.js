@@ -4,13 +4,13 @@ import AboutUsItemSmall from "./AboutUsItemSmall";
 
 function AboutUs() {
   return (
-    <Fragment>
+    <div style={}>
       {window.innerWidth > 600 ? (
         <AboutUsItemBig></AboutUsItemBig>
       ) : (
         <AboutUsItemSmall></AboutUsItemSmall>
       )}
-    </Fragment>
+    </div>
   );
 }
 

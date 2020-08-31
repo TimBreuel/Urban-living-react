@@ -1,13 +1,15 @@
 import React, { Fragment } from "react";
-
+import working from "../../img/WorkingTogether.png";
+import customer from "../../img/CustomerService.png";
+import office from "../../img/OfficeHours.png";
 function AboutUsItem() {
   return (
     <Fragment>
-      <div class="box1">
-        <div class="boxImage col4">
-          <img src="./img/WorkingTogether.png" alt="" />
+      <div className="box1">
+        <div className="boxImage col4">
+          <img src={working} alt="" />
         </div>
-        <div class="boxContent col8">
+        <div className="boxContent col8">
           <h3>Our Team</h3>
 
           <p>
@@ -27,11 +29,11 @@ function AboutUsItem() {
         </div>
       </div>
 
-      <div class="box2">
-        <div class="boxImage2 col4">
-          <img src="./img/CustomerService.png" alt="" />
+      <div className="box2">
+        <div className="boxImage2 col4">
+          <img src={customer} alt="" />
         </div>
-        <div class="boxContent2 col8">
+        <div className="boxContent2 col8">
           <h3>Contact Us</h3>
 
           <p>
@@ -52,11 +54,11 @@ function AboutUsItem() {
         </div>
       </div>
 
-      <div class="box3">
-        <div class="boxImage col4">
-          <img src="./img/OfficeHours.png" alt="" />
+      <div className="box3">
+        <div className="boxImage col4">
+          <img src={office} alt="" />
         </div>
-        <div class="boxContent col8">
+        <div className="boxContent col8">
           <h3>Our Office</h3>
 
           <p>
