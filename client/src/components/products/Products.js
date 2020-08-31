@@ -3,7 +3,7 @@ import Headline from "./Headline";
 import ProductsContext from "../../context/products/ProductsContext";
 import ProductItems from "./ProductItems";
 
-function Products() {
+function Products({ headline }) {
   const productsContext = useContext(ProductsContext);
   const { products, getAllProducts, filtered } = productsContext;
 

@@ -1,14 +1,24 @@
 import React from "react";
-
-function ProductDetails({ product, renderBack }) {
+function ProductDetails({ product, renderBack, addToCardProp }) {
   const handleRemove = () => {
     renderBack();
+  };
+
+  const handleAddToCart = () => {
+    addToCardProp();
   };
   return (
     <div className="details__bg">
       <div className="details__bg--white">
         <div className="row">
-          <div className="col-lg-6">
+          <div
+            className="col-lg-6"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <img src={product.imageL} alt="" className="details__img" />
           </div>
           <div className="col-lg-6 details-font">
@@ -31,7 +41,9 @@ function ProductDetails({ product, renderBack }) {
                 ${product.price}
               </span>
             </div>
-            <button className="details-add-btn btn">ADD TO CART</button>
+            <button className="details-add-btn btn" onClick={handleAddToCart}>
+              ADD TO CART
+            </button>
           </div>
         </div>
       </div>

@@ -451,11 +451,12 @@
 }
 
 .detals-img {
-  width: 100%;
+  width: 70%;
 }
 
 .details__img {
   border-radius: 10px 10px 10px 10px;
+  width: 100%;
 }
 
 .col6 {
@@ -804,3 +805,29 @@
     width: 300px;
   }
 }
+
+/* TRANSITION GROUP */
+.item-enter {
+  opacity: 0;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+.item-exit {
+  opacity: 1;
+}
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms ease-in;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* TRANSITION GROUP END */

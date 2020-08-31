@@ -46,10 +46,10 @@ function NavigationMenu() {
           <a href="!#">Login</a>
         </li>
         <li id="about-us">
-          <a href="!#">About Us</a>
+          <Link to="/aboutus">About Us</Link>
         </li>
         <li id="impressum">
-          <a href="!#">Impressum</a>
+          <Link to="/impressum">Impressum</Link>
         </li>
       </ul>
     </div>

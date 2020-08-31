@@ -4,6 +4,8 @@ import Navigation from "./components/layout/Navigation";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Products from "./components/products/Products";
 import ProductsState from "./context/products/ProductsState";
+import Impressum from "./components/About-impressum/Impressum";
+import AboutUs from "./components/About-impressum/AboutUs";
 
 function App() {
   return (
@@ -37,6 +39,16 @@ function App() {
               exact
               path="/products/tables"
               component={() => <Products category="table"></Products>}
+            ></Route>
+            <Route
+              exact
+              path="/impressum"
+              component={() => <Impressum></Impressum>}
+            ></Route>
+            <Route
+              exact
+              path="/aboutus"
+              component={() => <AboutUs></AboutUs>}
             ></Route>
           </Switch>
         </div>
