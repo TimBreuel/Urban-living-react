@@ -1,6 +1,7 @@
 import React, { useReducer } from "react";
 import ProductsContext from "./ProductsContext";
 import ProductsReducer from "./ProductsReducer";
+import { toast } from "react-toastify";
 import {
   GET_PRODUCTS,
   ADD_TO_CART,
@@ -30,7 +31,7 @@ const ProductsState = (props) => {
       const res = await axios.get("http://localhost:5000/products");
       dispatch({ type: GET_PRODUCTS, payload: res.data });
     } catch (error) {
-      console.log("Catch err:", error);
+      errorToast("Something went wrong!");
     }
   };
 
@@ -56,14 +57,18 @@ const ProductsState = (props) => {
   //ADD A ARTICEL TO CART
   const addArticelToCart = (product) => {
     dispatch({ type: ADD_TO_CART, payload: product });
+    toast.success("Added to your cart!");
   };
 
   //////////////////////////////
   //REMOVE AN ARTICLE FROM CART
   const removeArticelFromCart = (_id) => {
     dispatch({ type: REMOVE_FROM_CART, payload: _id });
+    toast.warning("Removed artical from cart!");
   };
 
+  ///////////////////////
+  //MENU SLIDE TOGGLE FN
   const menuSlideToggleFn = (boolean) => {
     if (boolean) {
       dispatch({ type: MENU_SLIDE_TOGGLE, payload: true });
@@ -72,6 +77,8 @@ const ProductsState = (props) => {
     }
   };
 
+  /////////////////////////////
+  //SHOPPING CART SLIDE TOGGLE
   const shoppingCartSlideToggleFn = (boolean) => {
     if (boolean) {
       dispatch({ type: SHOPPING_CART_TOGGLE, payload: true });
@@ -79,6 +86,15 @@ const ProductsState = (props) => {
       dispatch({ type: SHOPPING_CART_TOGGLE, payload: false });
     }
   };
+
+  //////////////////
+  //SUCCESS MESSAGE
+  const successToast = (msg) => toast.success(msg);
+
+  ////////////////
+  //ERROR MESSAGE
+  const errorToast = (msg) => toast.error(msg);
+
   return (
     <ProductsContext.Provider
       value={{
@@ -95,6 +111,8 @@ const ProductsState = (props) => {
         removeArticelFromCart,
         menuSlideToggleFn,
         shoppingCartSlideToggleFn,
+        successToast,
+        errorToast,
       }}
     >
       {props.children}

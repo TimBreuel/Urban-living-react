@@ -6,6 +6,8 @@ import Products from "./components/products/Products";
 import ProductsState from "./context/products/ProductsState";
 import Impressum from "./components/About-impressum/Impressum";
 import AboutUs from "./components/About-impressum/AboutUs";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
       <Router>
         <div className="App">
           <Navigation></Navigation>
+          <ToastContainer autoClose={2000} />
 
           <Switch>
             <Route
