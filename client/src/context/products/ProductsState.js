@@ -8,6 +8,8 @@ import {
   GET_ALL_CART,
   FILTER_PRODUCTS,
   CLEAR_FILTER,
+  MENU_SLIDE_TOGGLE,
+  SHOPPING_CART_TOGGLE,
 } from "../types";
 import axios from "axios";
 
@@ -16,6 +18,8 @@ const ProductsState = (props) => {
     products: [],
     shoppingCart: [],
     filtered: null,
+    menuSlideToggle: false,
+    shoppingCartSlideToggle: false,
   };
   const [state, dispatch] = useReducer(ProductsReducer, initalState);
 
@@ -59,18 +63,38 @@ const ProductsState = (props) => {
   const removeArticelFromCart = (_id) => {
     dispatch({ type: REMOVE_FROM_CART, payload: _id });
   };
+
+  const menuSlideToggleFn = (boolean) => {
+    if (boolean) {
+      dispatch({ type: MENU_SLIDE_TOGGLE, payload: true });
+    } else {
+      dispatch({ type: MENU_SLIDE_TOGGLE, payload: false });
+    }
+  };
+
+  const shoppingCartSlideToggleFn = (boolean) => {
+    if (boolean) {
+      dispatch({ type: SHOPPING_CART_TOGGLE, payload: true });
+    } else {
+      dispatch({ type: SHOPPING_CART_TOGGLE, payload: false });
+    }
+  };
   return (
     <ProductsContext.Provider
       value={{
         products: state.products,
         filtered: state.filtered,
         shoppingCart: state.shoppingCart,
+        menuSlideToggle: state.menuSlideToggle,
+        shoppingCartSlideToggle: state.shoppingCartSlideToggle,
         getAllProducts,
         filteredProducts,
         clearFilter,
         getAllArticelsForCart,
         addArticelToCart,
         removeArticelFromCart,
+        menuSlideToggleFn,
+        shoppingCartSlideToggleFn,
       }}
     >
       {props.children}

@@ -1,11 +1,12 @@
 import React, { Fragment } from "react";
-
+import Headline from "../products/Headline";
 function Impressum() {
   return (
     <Fragment>
+      <Headline txt="Impressum"></Headline>
       <div
         className="impressum"
-        style={{ padding: "150px 100px 0 100px", color: "#4d4954" }}
+        style={{ padding: "20px 60px 0 60px", color: "#4d4954" }}
       >
         <h2>Angaben gemäß 5 TMG</h2>
         <br />

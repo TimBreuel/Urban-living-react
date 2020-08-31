@@ -7,3 +7,5 @@ export const CLEAR_FILTER = "CLEAR_FILTER";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const GET_ALL_CART = "GET_ALL_CART";
+export const MENU_SLIDE_TOGGLE = "MENU_SLIDE_TOGGLE";
+export const SHOPPING_CART_TOGGLE = "SHOPPING_CART_TOGGLE";

@@ -4,9 +4,12 @@ import ProductsContext from "../../context/products/ProductsContext";
 
 function NavigationMenu() {
   const productsContext = useContext(ProductsContext);
-  const { filteredProducts, clearFilter } = productsContext;
+  const { filteredProducts, clearFilter, menuSlideToggle } = productsContext;
   return (
-    <div id="menu" className="slide-back">
+    <div
+      id="menu"
+      className={menuSlideToggle ? "slide-back show" : "slide-back hide"}
+    >
       <div className="searchBar">
         <i className="fas fa-search search-icon"></i>
       </div>

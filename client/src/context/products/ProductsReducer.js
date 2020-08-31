@@ -6,6 +6,8 @@ import {
   ADD_TO_CART,
   GET_ALL_CART,
   REMOVE_FROM_CART,
+  MENU_SLIDE_TOGGLE,
+  SHOPPING_CART_TOGGLE,
 } from "../types";
 
 export default (state, action) => {
@@ -53,6 +55,16 @@ export default (state, action) => {
         shoppingCart: state.shoppingCart.filter(
           (article) => article._id !== action.payload
         ),
+      };
+    case MENU_SLIDE_TOGGLE:
+      return {
+        ...state,
+        menuSlideToggle: action.payload,
+      };
+    case SHOPPING_CART_TOGGLE:
+      return {
+        ...state,
+        shoppingCartSlideToggle: action.payload,
       };
 
     default:

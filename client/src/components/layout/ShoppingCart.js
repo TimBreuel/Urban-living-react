@@ -3,14 +3,25 @@ import ProductsContext from "../../context/products/ProductsContext";
 import ShoppingCartItem from "./ShoppingCartItem";
 function ShoppingCart() {
   const productsContext = useContext(ProductsContext);
-  const { shoppingCart, getAllArticelsForCart } = productsContext;
+  const {
+    shoppingCart,
+    getAllArticelsForCart,
+    shoppingCartSlideToggle,
+  } = productsContext;
   useEffect(() => {
     getAllArticelsForCart();
     //eslint-disable-next-line
   }, []);
   return (
     <Fragment>
-      <div id="shoping-card" className="slide-back-cart">
+      <div
+        id="shoping-card"
+        className={
+          shoppingCartSlideToggle
+            ? "slide-back-cart show"
+            : "slide-back-cart hide"
+        }
+      >
         <h3>Shoping Cart</h3>
         <ul className="shopping-card-container">
           {shoppingCart !== null && shoppingCart.length !== 0

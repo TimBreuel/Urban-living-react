@@ -1,28 +1,14 @@
-import React, { Fragment } from "react";
-
+import React, { Fragment, useContext } from "react";
+import ProductsContext from "../../context/products/ProductsContext";
 function NavigationBtn() {
-  let menuTrigger = false;
-  let menuCounter = -220;
+  const productsContext = useContext(ProductsContext);
+  const { menuSlideToggle, menuSlideToggleFn } = productsContext;
   const slideMenu = () => {
-    const menu = document.querySelector("#menu");
-    let interval = setInterval(() => {
-      if (menuTrigger === false && menuCounter <= 0) {
-        menuCounter++;
-        menu.style.left = menuCounter + "px";
-      }
-      if (menuTrigger === true && menuCounter >= -220) {
-        menu.style.left = menuCounter + "px";
-        menuCounter--;
-      }
-      if (menuCounter === 0) {
-        menuTrigger = true;
-        clearInterval(interval);
-      }
-      if (menuCounter === -220) {
-        menuTrigger = false;
-        clearInterval(interval);
-      }
-    }, 1);
+    if (menuSlideToggle) {
+      menuSlideToggleFn(false);
+    } else {
+      menuSlideToggleFn(true);
+    }
   };
   return (
     <Fragment>

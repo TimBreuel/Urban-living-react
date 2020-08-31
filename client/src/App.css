@@ -90,9 +90,17 @@
   top: 75px;
   height: 100vh;
   width: 219px;
-  left: -220px;
+  left: 0px;
   background-color: #ffe5db;
   z-index: 999;
+  transition: all;
+  transition-duration: 0.5s;
+}
+#menu.hide {
+  transform: translate3d(-220px, 0, 0);
+}
+#menu.show {
+  transform: translate3d(0px, 0, 0);
 }
 
 #menu > ul > li {
@@ -219,6 +227,15 @@
   right: -300px;
   top: 75px;
   z-index: 999;
+  transition: all;
+  transition-duration: 0.5s;
+}
+
+#shoping-card.hide {
+  transform: translate3d(0px, 0, 0);
+}
+#shoping-card.show {
+  transform: translate3d(-300px, 0, 0);
 }
 
 #shoping-card > h3 {
@@ -831,3 +848,7 @@
   }
 }
 /* TRANSITION GROUP END */
+
+/* SMOOTH MENU TRANSITION  */
+
+/* END SMOOTH MENU TRANSITION  */

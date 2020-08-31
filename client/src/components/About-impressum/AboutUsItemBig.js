@@ -24,7 +24,7 @@ function AboutUsItem() {
             <a href="https://de.linkedin.com/in/tim-breuel">Go to site</a>
           </span>
           <span>
-            Send us yor Initiave application today. <a href="#">Go to chat</a>
+            Send us yor Initiave application today. <a href="!#">Go to chat</a>
           </span>
         </div>
       </div>
@@ -46,7 +46,7 @@ function AboutUsItem() {
             <a href="https://de.linkedin.com/in/tim-breuel">Go to site</a>
           </span>
           <span>
-            Chat: <a href="#">Go to chat</a>
+            Chat: <a href="!#">Go to chat</a>
           </span>
         </div>
         <div className="boxImage2 col4">
