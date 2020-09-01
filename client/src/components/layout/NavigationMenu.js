@@ -43,7 +43,7 @@ function NavigationMenu() {
           <a href="!#">About UL</a>
         </li>
         <li id="register">
-          <a href="!#">Register</a>
+          <Link to="/register">Register</Link>
         </li>
         <li id="login">
           <a href="!#">Login</a>

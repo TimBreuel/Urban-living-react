@@ -8,6 +8,7 @@ import Impressum from "./components/About-impressum/Impressum";
 import AboutUs from "./components/About-impressum/AboutUs";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Register from "./components/register-login/Register";
 
 function App() {
   return (
@@ -52,6 +53,11 @@ function App() {
               exact
               path="/aboutus"
               component={() => <AboutUs></AboutUs>}
+            ></Route>
+            <Route
+              exact
+              path="/register"
+              component={() => <Register></Register>}
             ></Route>
           </Switch>
         </div>
