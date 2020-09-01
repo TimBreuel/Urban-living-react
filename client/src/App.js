@@ -9,60 +9,63 @@ import AboutUs from "./components/About-impressum/AboutUs";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Register from "./components/register-login/Register";
+import AuthState from "./context/auth/AuthState";
 
 function App() {
   return (
-    <ProductsState>
-      <Router>
-        <div className="App">
-          <Navigation></Navigation>
-          <ToastContainer autoClose={2000} />
+    <AuthState>
+      <ProductsState>
+        <Router>
+          <div className="App">
+            <Navigation></Navigation>
+            <ToastContainer autoClose={2500} />
 
-          <Switch>
-            <Route
-              exact
-              path="/"
-              component={() => <Products></Products>}
-            ></Route>
-            <Route
-              exact
-              path="/products/chairs"
-              component={() => <Products category="chair"></Products>}
-            ></Route>
-            <Route
-              exact
-              path="/products/couches"
-              component={() => <Products category="chouch"></Products>}
-            ></Route>
-            <Route
-              exact
-              path="/products/lamps"
-              component={() => <Products category="lamp"></Products>}
-            ></Route>
-            <Route
-              exact
-              path="/products/tables"
-              component={() => <Products category="table"></Products>}
-            ></Route>
-            <Route
-              exact
-              path="/impressum"
-              component={() => <Impressum></Impressum>}
-            ></Route>
-            <Route
-              exact
-              path="/aboutus"
-              component={() => <AboutUs></AboutUs>}
-            ></Route>
-            <Route
-              exact
-              path="/register"
-              component={() => <Register></Register>}
-            ></Route>
-          </Switch>
-        </div>
-      </Router>
-    </ProductsState>
+            <Switch>
+              <Route
+                exact
+                path="/"
+                component={() => <Products></Products>}
+              ></Route>
+              <Route
+                exact
+                path="/products/chairs"
+                component={() => <Products category="chair"></Products>}
+              ></Route>
+              <Route
+                exact
+                path="/products/couches"
+                component={() => <Products category="chouch"></Products>}
+              ></Route>
+              <Route
+                exact
+                path="/products/lamps"
+                component={() => <Products category="lamp"></Products>}
+              ></Route>
+              <Route
+                exact
+                path="/products/tables"
+                component={() => <Products category="table"></Products>}
+              ></Route>
+              <Route
+                exact
+                path="/impressum"
+                component={() => <Impressum></Impressum>}
+              ></Route>
+              <Route
+                exact
+                path="/aboutus"
+                component={() => <AboutUs></AboutUs>}
+              ></Route>
+              <Route
+                exact
+                path="/register"
+                component={() => <Register></Register>}
+              ></Route>
+            </Switch>
+          </div>
+        </Router>
+      </ProductsState>
+    </AuthState>
   );
 }
 
