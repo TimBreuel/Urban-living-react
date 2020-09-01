@@ -13,7 +13,9 @@ const AuthState = (props) => {
   ////////////////////////////////////////////////////////////////
   ///////////////////////METHODS//////////////////////////////////
 
-  const registerUser = (user) => {};
+  const registerUser = (user) => {
+    console.log(user);
+  };
   //////////////////
   //SUCCESS MESSAGE
   const successAuthentication = (msg) => toast.success(msg);
@@ -28,6 +30,7 @@ const AuthState = (props) => {
         error: state.error,
         successAuthentication,
         errorAuthentication,
+        registerUser,
       }}
     >
       {props.children}

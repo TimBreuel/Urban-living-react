@@ -1,11 +1,11 @@
 import React, { Fragment, useState, useContext } from "react";
 import Headline from "../products/Headline";
 import validator from "validator";
-import ProductsContext from "../../context/products/ProductsContext";
+import AuthContext from "../../context/auth/AuthContext";
 
 function Register() {
-  const productsContext = useContext(ProductsContext);
-  const { successToast, errorToast } = productsContext;
+  const authContext = useContext(AuthContext);
+  const { errorAuthentication, registerUser } = authContext;
 
   const [user, setUser] = useState({
     fname: "",
@@ -47,7 +47,7 @@ function Register() {
           setValidation(true);
         } else {
           setValidation(false);
-          errorToast("First name is not valid");
+          errorAuthentication("First name is not valid");
         }
         break;
       case "lname":
@@ -58,7 +58,7 @@ function Register() {
           setValidation(true);
         } else {
           setValidation(false);
-          errorToast("Last name is not valid");
+          errorAuthentication("Last name is not valid");
         }
         break;
       case "street":
@@ -69,7 +69,7 @@ function Register() {
           setValidation(true);
         } else {
           setValidation(false);
-          errorToast("Street is not valid");
+          errorAuthentication("Street is not valid");
         }
         break;
       case "postcode":
@@ -80,7 +80,7 @@ function Register() {
           setValidation(true);
         } else {
           setValidation(false);
-          errorToast("Postcode is not valid");
+          errorAuthentication("Postcode is not valid");
         }
         break;
       case "city":
@@ -91,7 +91,7 @@ function Register() {
           setValidation(true);
         } else {
           setValidation(false);
-          errorToast("City is not valid");
+          errorAuthentication("City is not valid");
         }
         break;
       case "phoneNum":
@@ -102,7 +102,7 @@ function Register() {
           setValidation(true);
         } else {
           setValidation(false);
-          errorToast("Phonenumber is not valid");
+          errorAuthentication("Phonenumber is not valid");
         }
         break;
       case "email":
@@ -113,7 +113,7 @@ function Register() {
           setValidation(true);
         } else {
           setValidation(false);
-          errorToast("Email is not valid");
+          errorAuthentication("Email is not valid");
         }
         break;
       case "password":
@@ -124,7 +124,7 @@ function Register() {
           setValidation(true);
         } else {
           setValidation(false);
-          errorToast("Password is not falid");
+          errorAuthentication("Password is not falid");
         }
         break;
       case "repassword":
@@ -135,7 +135,7 @@ function Register() {
           setValidation(true);
         } else {
           setValidation(false);
-          errorToast("Repassword is not falid");
+          errorAuthentication("Repassword is not falid");
         }
         break;
 
@@ -150,11 +150,12 @@ function Register() {
     if (user.password === user.repassword) {
       if (validation) {
         //CALL CONTEXT FN
+        registerUser(user);
       } else {
-        errorToast("Some field is wrong, validation failed!");
+        errorAuthentication("Some field is wrong, validation failed!");
       }
     } else {
-      errorToast("Passwords are not the same");
+      errorAuthentication("Passwords are not the same");
     }
   };
   return (
