@@ -6,13 +6,13 @@ const registerUserSchema = new Schema({
   firstName: {
     type: String,
     required: true,
-    maxlength: 100,
+    maxlength: 50,
     minlength: 2,
   },
   lastName: {
     type: String,
     required: true,
-    maxlength: 100,
+    maxlength: 50,
     minlength: 2,
   },
   street: {
@@ -31,7 +31,13 @@ const registerUserSchema = new Schema({
     type: String,
     required: true,
     maxlength: 100,
-    minlength: 3,
+    minlength: 2,
+  },
+  phoneNum: {
+    type: Number,
+    required: true,
+    maxlength: 50,
+    min: 5,
   },
   email: {
     type: String,
@@ -43,7 +49,7 @@ const registerUserSchema = new Schema({
   password: {
     type: String,
     required: true,
-    maxlength: 100,
+    maxlength: 50,
     minlength: 5,
   },
 });

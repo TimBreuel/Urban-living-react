@@ -17,12 +17,30 @@ const AuthState = (props) => {
   //REGISTER USER
   const registerUser = (user) => {
     console.log(user);
+    const data = user;
+    axios
+      .post("http://localhost:5000/auth/register", data)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
 
   ////////////
   //LOGIN USER
   const loginUser = (user) => {
     console.log(user);
+    const data = user;
+    axios
+      .post("http://localhost:5000/auth/login", data)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
   //////////////////
   //SUCCESS MESSAGE
