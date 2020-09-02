@@ -4,9 +4,13 @@ import validator from "validator";
 import AuthContext from "../../context/auth/AuthContext";
 
 function Register() {
+  /////////////////////////
+  //AUTHENTICATION CONTEXT
   const authContext = useContext(AuthContext);
   const { errorAuthentication, registerUser } = authContext;
 
+  ////////////////
+  //SET THE STATE
   const [user, setUser] = useState({
     fname: "",
     lname: "",
@@ -19,6 +23,7 @@ function Register() {
     repassword: "",
   });
   const [validation, setValidation] = useState(true);
+  //DESTRUCTURING USER STATE
   const {
     fname,
     lname,
@@ -31,13 +36,16 @@ function Register() {
     repassword,
   } = user;
 
+  /////////////////////////////////////
+  //SET THE INPUT VALUES TOT THE STATE
   const onChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  ////////////////////////////////
+  //VALIDATOR CHECK ON BLUR EVENT
   const onBlur = (e) => {
     e.preventDefault();
-
     switch (e.target.name) {
       case "fname":
         if (
@@ -144,6 +152,8 @@ function Register() {
     }
   };
 
+  ///////////////
+  //SEND THE FORM
   const onSubmit = (e) => {
     e.preventDefault();
     //SEND TO CONTEXT REGISTER
@@ -151,6 +161,17 @@ function Register() {
       if (validation) {
         //CALL CONTEXT FN
         registerUser(user);
+        setUser({
+          fname: "",
+          lname: "",
+          street: "",
+          postcode: "",
+          city: "",
+          phoneNum: "",
+          email: "",
+          password: "",
+          repassword: "",
+        });
       } else {
         errorAuthentication("Some field is wrong, validation failed!");
       }

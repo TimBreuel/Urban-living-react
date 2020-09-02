@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Register from "./components/register-login/Register";
 import AuthState from "./context/auth/AuthState";
+import Login from "./components/register-login/Login";
 
 function App() {
   return (
@@ -60,6 +61,11 @@ function App() {
                 exact
                 path="/register"
                 component={() => <Register></Register>}
+              ></Route>
+              <Route
+                exact
+                path="/login"
+                component={() => <Login></Login>}
               ></Route>
             </Switch>
           </div>

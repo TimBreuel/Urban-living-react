@@ -13,7 +13,15 @@ const AuthState = (props) => {
   ////////////////////////////////////////////////////////////////
   ///////////////////////METHODS//////////////////////////////////
 
+  ////////////////
+  //REGISTER USER
   const registerUser = (user) => {
+    console.log(user);
+  };
+
+  ////////////
+  //LOGIN USER
+  const loginUser = (user) => {
     console.log(user);
   };
   //////////////////
@@ -31,6 +39,7 @@ const AuthState = (props) => {
         successAuthentication,
         errorAuthentication,
         registerUser,
+        loginUser,
       }}
     >
       {props.children}

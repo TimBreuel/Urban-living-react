@@ -46,7 +46,7 @@ function NavigationMenu() {
           <Link to="/register">Register</Link>
         </li>
         <li id="login">
-          <a href="!#">Login</a>
+          <Link to="/login">Login</Link>
         </li>
         <li id="about-us">
           <Link to="/aboutus">About Us</Link>
