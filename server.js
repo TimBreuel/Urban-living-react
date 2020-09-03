@@ -3,6 +3,7 @@ const cors = require("cors");
 const app = express();
 const productsRoute = require("./routes/productsRoute");
 const authRoute = require("./routes/authRoute");
+const cookieParser = require("cookie-parser");
 //////////////////////
 //MIDDLEWARE FUNCTIONS
 app.use(cors());
@@ -10,6 +11,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json({ extended: false }));
 app.use("/products", productsRoute);
 app.use("/auth", authRoute);
+app.use(cookieParser());
 
 /////////////
 //ROUTE HOME

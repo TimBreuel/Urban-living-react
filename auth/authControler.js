@@ -1,4 +1,8 @@
 const validator = require("validator");
+const jwt = require("jsonwebtoken");
+
+/////////////////////
+//CHECK THE REQ BODY
 const authValidation = (user) => {
   let isValid = true;
   let notValidMsg = "";
@@ -96,4 +100,11 @@ const authValidation = (user) => {
   }
 };
 
-module.exports = authValidation;
+const maxAge = 3 * 24 * 60 * 60;
+const createToken = (id) => {
+  return jwt.sign({ id }, "urban living secret", {
+    expiresIn: maxAge,
+  });
+};
+
+module.exports = { authValidation, createToken };

@@ -20,6 +20,7 @@ const AuthState = (props) => {
     axios
       .post("http://localhost:5000/auth/register", data)
       .then((response) => {
+        console.log(response);
         if (response.data === true) {
           successAuthentication("Registration succesfull");
         } else {

@@ -19,8 +19,8 @@ function registerUser(user) {
         });
         newUser
           .save()
-          .then(() => {
-            resolve(true);
+          .then((user) => {
+            resolve(user);
           })
           .catch((err) => {
             if (err.code === 11000) {
@@ -33,5 +33,9 @@ function registerUser(user) {
       .catch((err) => reject(err));
   });
 }
+
+const loginUser = (user) => {
+  return new Promise((resolve, reject) => {});
+};
 
 module.exports = { registerUser };

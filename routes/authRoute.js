@@ -1,6 +1,6 @@
 const express = require("express");
 const auth = express.Router();
-const authValidator = require("../auth/authValidator");
+const authControler = require("../auth/authControler");
 const mongooseUserModule = require("../modules/mongooseUserModel");
 
 auth.post("/login", (req, res) => {
@@ -13,12 +13,14 @@ auth.post("/login", (req, res) => {
 });
 
 auth.post("/register", (req, res) => {
-  const checkData = authValidator(req.body);
+  const checkData = authControler.authValidation(req.body);
   if (checkData) {
     mongooseUserModule
       .registerUser(req.body)
-      .then((data) => {
-        res.json(true);
+      .then((user) => {
+        const token = authControler.createToken(user._id);
+
+        res.cookie("jwt", token).json(true);
       })
       .catch((err) => {
         if (err === "exist") {
