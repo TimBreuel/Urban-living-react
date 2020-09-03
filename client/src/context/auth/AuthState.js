@@ -16,12 +16,15 @@ const AuthState = (props) => {
   ////////////////
   //REGISTER USER
   const registerUser = (user) => {
-    console.log(user);
     const data = user;
     axios
       .post("http://localhost:5000/auth/register", data)
       .then((response) => {
-        console.log(response);
+        if (response.data === true) {
+          successAuthentication("Registration succesfull");
+        } else {
+          errorAuthentication(response.data);
+        }
       })
       .catch((err) => {
         console.log(err.message);
@@ -31,12 +34,15 @@ const AuthState = (props) => {
   ////////////
   //LOGIN USER
   const loginUser = (user) => {
-    console.log(user);
     const data = user;
     axios
       .post("http://localhost:5000/auth/login", data)
       .then((response) => {
-        console.log(response);
+        if (response.data === true) {
+          successAuthentication("Login succesfull");
+        } else {
+          errorAuthentication(response.data);
+        }
       })
       .catch((err) => {
         console.log(err.message);

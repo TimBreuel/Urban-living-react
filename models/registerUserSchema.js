@@ -22,7 +22,7 @@ const registerUserSchema = new Schema({
     minlength: 5,
   },
   postcode: {
-    type: Number,
+    type: String,
     required: true,
     maxlength: 30,
     minlength: 5,
@@ -34,7 +34,7 @@ const registerUserSchema = new Schema({
     minlength: 2,
   },
   phoneNum: {
-    type: Number,
+    type: String,
     required: true,
     maxlength: 50,
     min: 5,
@@ -49,8 +49,11 @@ const registerUserSchema = new Schema({
   password: {
     type: String,
     required: true,
-    maxlength: 50,
+    maxlength: 100,
     minlength: 5,
+  },
+  articals: {
+    type: Array,
   },
 });
 

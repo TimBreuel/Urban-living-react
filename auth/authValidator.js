@@ -68,7 +68,7 @@ const authValidation = (user) => {
       case "password":
         if (
           validator.isEmpty(element[1]) ||
-          !validator.isLength(element[1], { min: 5, max: 50 })
+          !validator.isLength(element[1], { min: 5, max: 100 })
         ) {
           isValid = false;
           notValidMsg += "Password is not falid\n";
@@ -77,7 +77,7 @@ const authValidation = (user) => {
       case "repassword":
         if (
           validator.isEmpty(element[1]) ||
-          !validator.isLength(element[1], { min: 5, max: 50 })
+          !validator.isLength(element[1], { min: 5, max: 100 })
         ) {
           isValid = false;
           notValidMsg += "Repassword is not falid\n";
