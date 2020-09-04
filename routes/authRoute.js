@@ -19,8 +19,7 @@ auth.post("/register", (req, res) => {
       .registerUser(req.body)
       .then((user) => {
         const token = authControler.createToken(user._id);
-
-        res.cookie("jwt", token).json(true);
+        res.json({ token: token });
       })
       .catch((err) => {
         if (err === "exist") {

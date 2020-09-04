@@ -100,10 +100,9 @@ const authValidation = (user) => {
   }
 };
 
-const maxAge = 3 * 24 * 60 * 60;
 const createToken = (id) => {
   return jwt.sign({ id }, "urban living secret", {
-    expiresIn: maxAge,
+    expiresIn: 3600,
   });
 };
 
