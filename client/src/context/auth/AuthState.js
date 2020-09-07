@@ -2,12 +2,13 @@ import React, { useReducer } from "react";
 import AuthContext from "./AuthContext";
 import AuthReducer from "./AuthReducer";
 import { toast } from "react-toastify";
-import {} from "../types";
+import { IS_AUTHENTICATED, IS_NOT_AUTHENTICATED } from "../types";
 import axios from "axios";
 
 const AuthState = (props) => {
   const initalState = {
     error: null,
+    authenticated: false,
   };
   const [state, dispatch] = useReducer(AuthReducer, initalState);
   ////////////////////////////////////////////////////////////////
@@ -20,11 +21,13 @@ const AuthState = (props) => {
     axios
       .post("http://localhost:5000/auth/register", data)
       .then((response) => {
-        console.log(response);
-        if (response.data === true) {
+        if (response.data.token) {
           successAuthentication("Registration succesfull");
+          localStorage.setItem("token", response.data.token);
+          dispatch({ type: IS_AUTHENTICATED });
         } else {
           errorAuthentication(response.data);
+          dispatch({ type: IS_NOT_AUTHENTICATED });
         }
       })
       .catch((err) => {
@@ -61,6 +64,7 @@ const AuthState = (props) => {
     <AuthContext.Provider
       value={{
         error: state.error,
+        authenticated: state.authenticated,
         successAuthentication,
         errorAuthentication,
         registerUser,
