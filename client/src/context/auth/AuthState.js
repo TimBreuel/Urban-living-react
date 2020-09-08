@@ -38,6 +38,7 @@ const AuthState = (props) => {
   ////////////
   //LOGIN USER
   const loginUser = (user) => {
+    console.log("State:", user);
     const data = user;
     axios
       .post("http://localhost:5000/auth/login", data)

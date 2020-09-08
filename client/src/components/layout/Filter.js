@@ -16,7 +16,6 @@ function Filter() {
   const onChange = (e) => {
     if (text.current.value !== "") {
       filteredProducts(e.target.value);
-      console.log("ONCHANGE:", e.target.value);
     } else {
       clearFilter();
     }

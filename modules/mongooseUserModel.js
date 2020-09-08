@@ -2,6 +2,8 @@ const connect = require("../models/connectionFn");
 const USER = require("../models/registerUserSchema");
 const passwordHash = require("password-hash");
 
+///////////////
+//REGISTER USER
 function registerUser(user) {
   return new Promise((resolve, reject) => {
     connect()
@@ -34,8 +36,32 @@ function registerUser(user) {
   });
 }
 
-const loginUser = (user) => {
-  return new Promise((resolve, reject) => {});
+/////////////
+//LOGIN USER
+const loginUser = (email, password) => {
+  return new Promise((resolve, reject) => {
+    connect()
+      .then(() => {
+        USER.findOne({ email: email })
+          .then((user) => {
+            if (user) {
+              if (passwordHash.verify(password, user.password)) {
+                resolve(user);
+              } else {
+                reject("Password not match");
+              }
+            } else {
+              reject("Email not found");
+            }
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
 };
 
-module.exports = { registerUser };
+module.exports = { registerUser, loginUser };

@@ -4,9 +4,16 @@ const authControler = require("../auth/authControler");
 const mongooseUserModule = require("../modules/mongooseUserModel");
 
 auth.post("/login", (req, res) => {
-  const checkData = authValidator(req.body);
+  const checkData = authControler.authValidation(req.body);
   if (checkData) {
-    res.json(checkData);
+    mongooseUserModule
+      .loginUser(req.body.email, req.body.password)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log("ERR:", err);
+      });
   } else {
     res.json(checkData);
   }
