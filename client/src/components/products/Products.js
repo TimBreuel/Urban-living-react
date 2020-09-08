@@ -5,10 +5,11 @@ import ProductItems from "./ProductItems";
 
 function Products({ headline }) {
   const productsContext = useContext(ProductsContext);
-  const { products, getAllProducts, filtered } = productsContext;
+  const { products, getAllProducts, filtered, setLoading } = productsContext;
 
   useEffect(() => {
     getAllProducts();
+    setLoading(true);
     //eslint-disable-next-line
   }, []);
   return (

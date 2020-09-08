@@ -29,7 +29,7 @@ function ProductItem({ product }) {
     <Fragment>
       <TransitionGroup>
         {details ? (
-          <CSSTransition timeout={500} classNames="item">
+          <CSSTransition timeout={250} classNames="item">
             <ProductDetails
               product={product}
               renderBack={handleClickDetailsBack}

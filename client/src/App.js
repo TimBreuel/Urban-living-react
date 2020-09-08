@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./App.css";
-import ProductsContext from "../src/context/products/ProductsContext";
 import Navigation from "./components/layout/Navigation";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Products from "./components/products/Products";
@@ -14,10 +13,6 @@ import AuthState from "./context/auth/AuthState";
 import Login from "./components/register-login/Login";
 
 function App() {
-  const productsContext = useContext(ProductsContext);
-  // const { loading } = productsContext;
-  const loading = false;
-  console.log(productsContext);
   return (
     <AuthState>
       <ProductsState>
@@ -25,18 +20,6 @@ function App() {
           <div className="App">
             <Navigation></Navigation>
             <ToastContainer autoClose={2500} />
-            {loading && (
-              <div className="spinnerShadow">
-                <div
-                  className="spinner-border"
-                  style={{ width: "4rem", height: "4rem", color: "#4d4954" }}
-                  role="status"
-                >
-                  <span className="sr-only">Loading...</span>
-                </div>
-              </div>
-            )}
-
             <Switch>
               <Route
                 exact

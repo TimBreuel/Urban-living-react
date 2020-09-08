@@ -17,11 +17,13 @@ export default (state, action) => {
       return {
         ...state,
         products: action.payload,
+        loading: false,
       };
     case GET_PRODUCTS_CATEGORY:
       return {
         ...state,
         productsCategory: action.payload,
+        loading: false,
       };
     case FILTER_PRODUCTS:
       return {
@@ -34,21 +36,25 @@ export default (state, action) => {
             product.color.match(regex)
           );
         }),
+        loading: false,
       };
     case CLEAR_FILTER:
       return {
         ...state,
         filtered: null,
+        loading: false,
       };
     case ADD_TO_CART:
       return {
         ...state,
         shoppingCart: [action.payload, ...state.shoppingCart],
+        loading: false,
       };
     case GET_ALL_CART:
       return {
         ...state,
         shoppingCart: [...state.shoppingCart],
+        loading: false,
       };
     case REMOVE_FROM_CART:
       return {
@@ -56,6 +62,7 @@ export default (state, action) => {
         shoppingCart: state.shoppingCart.filter(
           (article) => article._id !== action.payload
         ),
+        loading: false,
       };
     case MENU_SLIDE_TOGGLE:
       return {
