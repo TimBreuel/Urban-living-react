@@ -183,7 +183,7 @@ function Register() {
     <Fragment>
       <Headline txt="Register now"></Headline>
       <div className="form-container">
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className="mb-5">
           <label htmlFor="firstName">First Name</label>
           <input
             type="text"

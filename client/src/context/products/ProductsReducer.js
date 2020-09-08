@@ -8,6 +8,7 @@ import {
   REMOVE_FROM_CART,
   MENU_SLIDE_TOGGLE,
   SHOPPING_CART_TOGGLE,
+  SET_LOADING,
 } from "../types";
 
 export default (state, action) => {
@@ -65,6 +66,11 @@ export default (state, action) => {
       return {
         ...state,
         shoppingCartSlideToggle: action.payload,
+      };
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: action.payload,
       };
 
     default:

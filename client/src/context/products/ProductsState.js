@@ -11,6 +11,7 @@ import {
   CLEAR_FILTER,
   MENU_SLIDE_TOGGLE,
   SHOPPING_CART_TOGGLE,
+  SET_LOADING,
 } from "../types";
 import axios from "axios";
 
@@ -21,6 +22,7 @@ const ProductsState = (props) => {
     filtered: null,
     menuSlideToggle: false,
     shoppingCartSlideToggle: false,
+    loading: false,
   };
   const [state, dispatch] = useReducer(ProductsReducer, initalState);
 
@@ -95,6 +97,12 @@ const ProductsState = (props) => {
   //ERROR MESSAGE
   const errorToast = (msg) => toast.error(msg);
 
+  //////////////
+  //SET LOADING
+  const setLoading = (boolean) => {
+    dispatch({ type: SET_LOADING, payload: boolean });
+  };
+
   return (
     <ProductsContext.Provider
       value={{
@@ -103,6 +111,7 @@ const ProductsState = (props) => {
         shoppingCart: state.shoppingCart,
         menuSlideToggle: state.menuSlideToggle,
         shoppingCartSlideToggle: state.shoppingCartSlideToggle,
+        loading: state.loading,
         getAllProducts,
         filteredProducts,
         clearFilter,
@@ -113,6 +122,7 @@ const ProductsState = (props) => {
         shoppingCartSlideToggleFn,
         successToast,
         errorToast,
+        setLoading,
       }}
     >
       {props.children}
