@@ -29,26 +29,6 @@ function App() {
               ></Route>
               <Route
                 exact
-                path="/products/chairs"
-                component={() => <Products category="chair"></Products>}
-              ></Route>
-              <Route
-                exact
-                path="/products/couches"
-                component={() => <Products category="chouch"></Products>}
-              ></Route>
-              <Route
-                exact
-                path="/products/lamps"
-                component={() => <Products category="lamp"></Products>}
-              ></Route>
-              <Route
-                exact
-                path="/products/tables"
-                component={() => <Products category="table"></Products>}
-              ></Route>
-              <Route
-                exact
                 path="/impressum"
                 component={() => <Impressum></Impressum>}
               ></Route>
