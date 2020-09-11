@@ -90,9 +90,6 @@ const ProductsState = (props) => {
       .catch((err) => {
         console.log(err.message);
       });
-
-    dispatch({ type: ADD_TO_CART, payload: product });
-    toast.success("Added to your cart!");
   };
 
   //////////////////////////////

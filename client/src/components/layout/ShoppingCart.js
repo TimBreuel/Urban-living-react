@@ -29,7 +29,7 @@ function ShoppingCart() {
       >
         <h3>Shoping Cart</h3>
         <ul className="shopping-card-container">
-          {shoppingCart !== null && shoppingCart.length !== 0
+          {shoppingCart !== null && shoppingCart.length > 0
             ? shoppingCart.map((product) => {
                 return (
                   <ShoppingCartItem
