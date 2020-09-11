@@ -1,6 +1,8 @@
 import React, { Fragment, useContext, useEffect } from "react";
 import ProductsContext from "../../context/products/ProductsContext";
 import ShoppingCartItem from "./ShoppingCartItem";
+import AuthContext from "../../context/auth/AuthContext";
+
 function ShoppingCart() {
   const productsContext = useContext(ProductsContext);
   const {
@@ -8,10 +10,13 @@ function ShoppingCart() {
     getAllArticelsForCart,
     shoppingCartSlideToggle,
   } = productsContext;
+
+  const authContext = useContext(AuthContext);
+  const { user } = authContext;
   useEffect(() => {
-    getAllArticelsForCart();
+    getAllArticelsForCart(user);
     //eslint-disable-next-line
-  }, []);
+  }, [shoppingCart]);
   return (
     <Fragment>
       <div

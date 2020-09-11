@@ -65,7 +65,6 @@ const loginUser = (email, password) => {
 };
 
 const userArticals = (id) => {
-  console.log("Mongo:", id);
   return new Promise((resolve, reject) => {
     connect()
       .then(() => {
@@ -81,4 +80,22 @@ const userArticals = (id) => {
   });
 };
 
-module.exports = { registerUser, loginUser, userArticals };
+const userArticalsAdd = (id, product) => {
+  return new Promise((resolve, reject) => {
+    connect()
+      .then(() => {
+        USER.findByIdAndUpdate({ _id: id }, { $push: { articals: product } })
+          .then((user) => {
+            if (user) {
+              resolve(user.articals);
+            } else {
+              reject("User not find");
+            }
+          })
+          .catch((err) => reject(err));
+      })
+      .catch((err) => reject(err));
+  });
+};
+
+module.exports = { registerUser, loginUser, userArticals, userArticalsAdd };

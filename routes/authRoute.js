@@ -43,14 +43,25 @@ auth.post("/register", (req, res) => {
 });
 
 auth.post("/articals", (req, res) => {
-  console.log("post:", req.body);
   if (req.body) {
-    const decoded = authControler.decodeToken(req.body);
-    console.log(decoded);
     mongooseUserModule
-      .userArticals(decoded)
+      .userArticals(req.body.decoded.id)
       .then((articals) => {
-        console.log(articals);
+        // console.log(articals);
+        res.json(articals);
+      })
+      .catch((err) => console.log(err));
+  } else {
+    console.log("req.body is empty");
+  }
+});
+
+auth.post("/articals/add", (req, res) => {
+  if (req.body) {
+    // console.log("post:", req.body);
+    mongooseUserModule
+      .userArticalsAdd(req.body.decoded.id, req.body.product)
+      .then((articals) => {
         res.json(articals);
       })
       .catch((err) => console.log(err));

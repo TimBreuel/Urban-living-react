@@ -1,4 +1,4 @@
-import React, { useReducer, useContext } from "react";
+import React, { useReducer } from "react";
 import ProductsContext from "./ProductsContext";
 import ProductsReducer from "./ProductsReducer";
 import { toast } from "react-toastify";
@@ -14,7 +14,7 @@ import {
   SET_LOADING,
 } from "../types";
 import axios from "axios";
-import AuthContext from "../auth/AuthContext";
+import jwt_decode from "jwt-decode";
 
 const ProductsState = (props) => {
   const initalState = {
@@ -26,8 +26,7 @@ const ProductsState = (props) => {
     loading: false,
   };
   const [state, dispatch] = useReducer(ProductsReducer, initalState);
-  const authContext = useContext(AuthContext);
-  const { user } = authContext;
+
   ///////////////////
   //GET ALL PRODUCTS
   const getAllProducts = async () => {
@@ -54,15 +53,14 @@ const ProductsState = (props) => {
   /////////////////////////////
   //GET ALL ARTICELS FROM CART
   const getAllArticelsForCart = (token) => {
-    console.log("token:", token);
     if (token) {
-      const data = { token };
+      let decoded = jwt_decode(token);
+      const data = { decoded };
       axios
         .post("http://localhost:5000/auth/articals", data)
         .then((response) => {
-          console.log(response);
           if (response.status === 200) {
-            // dispatch({ type: GET_ALL_CART });
+            dispatch({ type: GET_ALL_CART, payload: response.data });
           } else {
             errorToast(response.data);
           }
@@ -75,7 +73,24 @@ const ProductsState = (props) => {
 
   ////////////////////////
   //ADD A ARTICEL TO CART
-  const addArticelToCart = (product) => {
+  const addArticelToCart = (product, token) => {
+    let decoded = jwt_decode(token);
+    const data = { decoded, product };
+
+    axios
+      .post("http://localhost:5000/auth/articals/add", data)
+      .then((response) => {
+        if (response.status === 200) {
+          dispatch({ type: ADD_TO_CART, payload: response.data });
+          successToast("Added to your cart");
+        } else {
+          errorToast(response.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+
     dispatch({ type: ADD_TO_CART, payload: product });
     toast.success("Added to your cart!");
   };

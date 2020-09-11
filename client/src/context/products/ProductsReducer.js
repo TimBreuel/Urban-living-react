@@ -47,13 +47,13 @@ export default (state, action) => {
     case ADD_TO_CART:
       return {
         ...state,
-        shoppingCart: [action.payload, ...state.shoppingCart],
+        shoppingCart: action.payload,
         loading: false,
       };
     case GET_ALL_CART:
       return {
         ...state,
-        shoppingCart: [...state.shoppingCart],
+        shoppingCart: action.payload,
         loading: false,
       };
     case REMOVE_FROM_CART:

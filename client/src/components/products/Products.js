@@ -24,6 +24,7 @@ function Products({ headline }) {
   }, []);
   useEffect(() => {
     getAllArticelsForCart(user);
+    //eslint-disable-next-line
   }, [user]);
   return (
     <Fragment>

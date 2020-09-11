@@ -107,9 +107,4 @@ const createToken = (id) => {
   });
 };
 
-const decodeToken = (token) => {
-  const decoded = jwt_decode(token);
-  return decoded;
-};
-
-module.exports = { authValidation, createToken, decodeToken };
+module.exports = { authValidation, createToken };
