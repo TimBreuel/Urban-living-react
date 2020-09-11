@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useContext } from "react";
 import ProductsContext from "./ProductsContext";
 import ProductsReducer from "./ProductsReducer";
 import { toast } from "react-toastify";
@@ -14,6 +14,7 @@ import {
   SET_LOADING,
 } from "../types";
 import axios from "axios";
+import AuthContext from "../auth/AuthContext";
 
 const ProductsState = (props) => {
   const initalState = {
@@ -25,7 +26,8 @@ const ProductsState = (props) => {
     loading: false,
   };
   const [state, dispatch] = useReducer(ProductsReducer, initalState);
-
+  const authContext = useContext(AuthContext);
+  const { user } = authContext;
   ///////////////////
   //GET ALL PRODUCTS
   const getAllProducts = async () => {
@@ -51,8 +53,24 @@ const ProductsState = (props) => {
 
   /////////////////////////////
   //GET ALL ARTICELS FROM CART
-  const getAllArticelsForCart = () => {
-    dispatch({ type: GET_ALL_CART });
+  const getAllArticelsForCart = (token) => {
+    console.log("token:", token);
+    if (token) {
+      const data = { token };
+      axios
+        .post("http://localhost:5000/auth/articals", data)
+        .then((response) => {
+          console.log(response);
+          if (response.status === 200) {
+            // dispatch({ type: GET_ALL_CART });
+          } else {
+            errorToast(response.data);
+          }
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }
   };
 
   ////////////////////////

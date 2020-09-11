@@ -6,7 +6,7 @@ import NavigationMenu from "./NavigationMenu";
 import ShoppingCart from "./ShoppingCart";
 import Filter from "./Filter";
 import ProductsContext from "../../context/products/ProductsContext";
-
+import SignInOutBtn from "../register-login/SignInOutBtn";
 function Navigation() {
   const productsContext = useContext(ProductsContext);
   const { loading } = productsContext;
@@ -29,6 +29,7 @@ function Navigation() {
         <div className="logo">
           <img src={logo} alt="" />
         </div>
+        <SignInOutBtn></SignInOutBtn>
         <ShoppingCardBtn></ShoppingCardBtn>
       </nav>
       <NavigationMenu></NavigationMenu>

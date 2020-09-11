@@ -18,6 +18,12 @@ function Login() {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  const onLogIn = (e) => {
+    e.preventDefault();
+    loginUser(user);
+    setUser({ email: "", password: "" });
+  };
+
   const onBlur = (e) => {
     e.preventDefault();
 
@@ -87,7 +93,12 @@ function Login() {
             onBlur={onBlur}
           />
 
-          <input type="submit" className="btn" value="LOGIN" />
+          <input
+            type="submit"
+            className="btn"
+            value="LOGIN"
+            onClick={onLogIn}
+          />
         </form>
       </div>
     </Fragment>

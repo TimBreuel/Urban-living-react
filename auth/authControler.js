@@ -1,5 +1,6 @@
 const validator = require("validator");
 const jwt = require("jsonwebtoken");
+const jwt_decode = require("jwt-decode");
 
 /////////////////////
 //CHECK THE REQ BODY
@@ -106,4 +107,9 @@ const createToken = (id) => {
   });
 };
 
-module.exports = { authValidation, createToken };
+const decodeToken = (token) => {
+  const decoded = jwt_decode(token);
+  return decoded;
+};
+
+module.exports = { authValidation, createToken, decodeToken };

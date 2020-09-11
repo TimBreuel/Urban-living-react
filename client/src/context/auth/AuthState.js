@@ -2,13 +2,20 @@ import React, { useReducer } from "react";
 import AuthContext from "./AuthContext";
 import AuthReducer from "./AuthReducer";
 import { toast } from "react-toastify";
-import { IS_AUTHENTICATED, IS_NOT_AUTHENTICATED } from "../types";
+import {
+  IS_AUTHENTICATED,
+  IS_NOT_AUTHENTICATED,
+  SIGN_OUT,
+  SIGN_IN,
+  CHECK_LOCALSTORAGE,
+} from "../types";
 import axios from "axios";
 
 const AuthState = (props) => {
   const initalState = {
     error: null,
     authenticated: false,
+    user: null,
   };
   const [state, dispatch] = useReducer(AuthReducer, initalState);
   ////////////////////////////////////////////////////////////////
@@ -38,12 +45,13 @@ const AuthState = (props) => {
   ////////////
   //LOGIN USER
   const loginUser = (user) => {
-    console.log("State:", user);
     const data = user;
     axios
       .post("http://localhost:5000/auth/login", data)
       .then((response) => {
-        if (response.data === true) {
+        if (response.status === 200) {
+          localStorage.setItem("token", response.data.token);
+          dispatch({ type: SIGN_IN, payload: response.data.token });
           successAuthentication("Login succesfull");
         } else {
           errorAuthentication(response.data);
@@ -61,15 +69,35 @@ const AuthState = (props) => {
   //ERROR MESSAGE
   const errorAuthentication = (msg) => toast.error(msg);
 
+  /////////////////
+  //SIGN IN OR OUT
+  const signOut = () => {
+    dispatch({ type: SIGN_OUT });
+    localStorage.removeItem("token");
+    successAuthentication("Sign out sucessful");
+  };
+
+  //////////////////////
+  //CHECK LOCAL STORAGE
+  const checkLocalStorageAndLogin = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      dispatch({ type: CHECK_LOCALSTORAGE, payload: token });
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
         error: state.error,
         authenticated: state.authenticated,
+        user: state.user,
         successAuthentication,
         errorAuthentication,
         registerUser,
         loginUser,
+        signOut,
+        checkLocalStorageAndLogin,
       }}
     >
       {props.children}

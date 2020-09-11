@@ -64,4 +64,21 @@ const loginUser = (email, password) => {
   });
 };
 
-module.exports = { registerUser, loginUser };
+const userArticals = (id) => {
+  console.log("Mongo:", id);
+  return new Promise((resolve, reject) => {
+    connect()
+      .then(() => {
+        USER.findById({ _id: id }).then((user) => {
+          if (user) {
+            resolve(user.articals);
+          } else {
+            reject("User not find");
+          }
+        });
+      })
+      .catch((err) => reject(err));
+  });
+};
+
+module.exports = { registerUser, loginUser, userArticals };

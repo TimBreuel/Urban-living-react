@@ -8,8 +8,10 @@ auth.post("/login", (req, res) => {
   if (checkData) {
     mongooseUserModule
       .loginUser(req.body.email, req.body.password)
-      .then((data) => {
-        console.log(data);
+      .then((user) => {
+        console.log(user);
+        const token = authControler.createToken(user._id);
+        res.json({ token: token });
       })
       .catch((err) => {
         console.log("ERR:", err);
@@ -37,6 +39,23 @@ auth.post("/register", (req, res) => {
       });
   } else {
     res.json(checkData);
+  }
+});
+
+auth.post("/articals", (req, res) => {
+  console.log("post:", req.body);
+  if (req.body) {
+    const decoded = authControler.decodeToken(req.body);
+    console.log(decoded);
+    mongooseUserModule
+      .userArticals(decoded)
+      .then((articals) => {
+        console.log(articals);
+        res.json(articals);
+      })
+      .catch((err) => console.log(err));
+  } else {
+    console.log("req.body is empty");
   }
 });
 
