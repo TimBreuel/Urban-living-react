@@ -16,7 +16,7 @@ function ShoppingCart() {
   useEffect(() => {
     getAllArticelsForCart(user);
     //eslint-disable-next-line
-  }, [shoppingCart]);
+  }, [shoppingCart, user]);
   return (
     <Fragment>
       <div

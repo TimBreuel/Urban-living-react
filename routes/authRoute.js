@@ -9,7 +9,7 @@ auth.post("/login", (req, res) => {
     mongooseUserModule
       .loginUser(req.body.email, req.body.password)
       .then((user) => {
-        console.log(user);
+        // console.log(user);
         const token = authControler.createToken(user._id);
         res.json({ token: token });
       })
