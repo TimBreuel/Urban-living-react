@@ -94,9 +94,22 @@ const ProductsState = (props) => {
 
   //////////////////////////////
   //REMOVE AN ARTICLE FROM CART
-  const removeArticelFromCart = (_id) => {
-    dispatch({ type: REMOVE_FROM_CART, payload: _id });
-    toast.warning("Removed artical from cart!");
+  const removeArticelFromCart = (_id, token) => {
+    let decoded = jwt_decode(token);
+    const data = { decoded, _id };
+
+    axios
+      .post("http://localhost:5000/auth/articals/remove", data)
+      .then((response) => {
+        if (response === 200) {
+          console.log(response.data);
+        } else {
+          errorToast(response.data);
+        }
+      })
+      .catch((err) => console.log(err));
+    // dispatch({ type: REMOVE_FROM_CART, payload: _id });
+    // toast.warning("Removed artical from cart!");
   };
 
   ///////////////////////
