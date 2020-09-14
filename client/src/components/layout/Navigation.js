@@ -7,6 +7,7 @@ import ShoppingCart from "./ShoppingCart";
 import Filter from "./Filter";
 import ProductsContext from "../../context/products/ProductsContext";
 import SignInOutBtn from "../register-login/SignInOutBtn";
+import { Link } from "react-router-dom";
 function Navigation() {
   const productsContext = useContext(ProductsContext);
   const { loading } = productsContext;
@@ -27,7 +28,9 @@ function Navigation() {
         <NavigationBtn></NavigationBtn>
         <Filter></Filter>
         <div className="logo">
-          <img src={logo} alt="" />
+          <Link to="/">
+            <img src={logo} alt="" />
+          </Link>
         </div>
         <SignInOutBtn></SignInOutBtn>
         <ShoppingCardBtn></ShoppingCardBtn>

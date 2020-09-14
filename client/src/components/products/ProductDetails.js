@@ -4,9 +4,9 @@ function ProductDetails({ product, renderBack, addToCardProp }) {
     renderBack();
   };
 
-  const handleAddToCart = () => {
-    addToCardProp();
-  };
+  // const handleAddToCart = () => {
+  //   addToCardProp(product);
+  // };
   return (
     <div className="details__bg">
       <div className="details__bg--white">
@@ -41,7 +41,10 @@ function ProductDetails({ product, renderBack, addToCardProp }) {
                 ${product.price}
               </span>
             </div>
-            <button className="details-add-btn btn" onClick={handleAddToCart}>
+            <button
+              className="details-add-btn btn"
+              onClick={() => addToCardProp(product)}
+            >
               ADD TO CART
             </button>
           </div>
