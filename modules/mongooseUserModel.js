@@ -98,4 +98,24 @@ const userArticalsAdd = (id, product) => {
   });
 };
 
-module.exports = { registerUser, loginUser, userArticals, userArticalsAdd };
+const userArticalsRemove = (id, productId) => {
+  return new Promise((resolve, reject) => {
+    connect()
+      .then(() => {
+        USER.updateOne({ _id: id }, { $pull: { articals: { _id: productId } } })
+          .then((product) => {
+            resolve("Deleted from Array");
+          })
+          .catch((err) => reject(err));
+      })
+      .catch((err) => reject(err));
+  });
+};
+
+module.exports = {
+  registerUser,
+  loginUser,
+  userArticals,
+  userArticalsAdd,
+  userArticalsRemove,
+};

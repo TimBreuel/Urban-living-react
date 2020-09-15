@@ -1,11 +1,15 @@
 import React, { Fragment, useContext } from "react";
 import ProductsContext from "../../context/products/ProductsContext";
+import AuthContext from "../../context/auth/AuthContext";
 
 export default function ShoppingCartItem({ product }) {
   const productsContext = useContext(ProductsContext);
-  const { removeArticelFromCart } = productsContext;
+  const { removeArticelFromCart, setLoading } = productsContext;
+  const authContext = useContext(AuthContext);
+  const { user } = authContext;
   const removeCart = (_id) => {
-    removeArticelFromCart(_id);
+    removeArticelFromCart(_id, user);
+    setLoading(true);
   };
   return (
     <Fragment>

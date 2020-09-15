@@ -101,15 +101,15 @@ const ProductsState = (props) => {
     axios
       .post("http://localhost:5000/auth/articals/remove", data)
       .then((response) => {
-        if (response === 200) {
+        if (response.status === 200) {
           console.log(response.data);
+          dispatch({ type: REMOVE_FROM_CART, payload: _id });
+          toast.warning("Removed artical from cart!");
         } else {
-          errorToast(response.data);
+          errorToast("Something went wrong!");
         }
       })
       .catch((err) => console.log(err));
-    // dispatch({ type: REMOVE_FROM_CART, payload: _id });
-    // toast.warning("Removed artical from cart!");
   };
 
   ///////////////////////

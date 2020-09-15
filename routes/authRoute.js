@@ -70,4 +70,19 @@ auth.post("/articals/add", (req, res) => {
   }
 });
 
+auth.post("/articals/remove", (req, res) => {
+  if (req.body) {
+    // console.log("post:", req.body);
+    mongooseUserModule
+      .userArticalsRemove(req.body.decoded.id, req.body._id)
+      .then((data) => {
+        console.log(data);
+        res.json(data);
+      })
+      .catch((err) => console.log(err));
+  } else {
+    console.log("req.body is empty");
+  }
+});
+
 module.exports = auth;
