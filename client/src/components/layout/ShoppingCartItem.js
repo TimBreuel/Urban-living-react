@@ -25,7 +25,7 @@ export default function ShoppingCartItem({ product }) {
           </div>
           <div className="cart-price-cost">
             <i className="fas fa-chevron-left arrow-minus"></i>
-            <span className="input-num amount">1</span>
+            <span className="input-num amount">{product.amount}</span>
             <i className="fas fa-chevron-right arrow-plus"></i> Price:
             <span className="cart-price">{product.price}</span> €
           </div>

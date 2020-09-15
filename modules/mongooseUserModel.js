@@ -84,10 +84,28 @@ const userArticalsAdd = (id, product) => {
   return new Promise((resolve, reject) => {
     connect()
       .then(() => {
-        USER.findByIdAndUpdate({ _id: id }, { $push: { articals: product } })
+        USER.findById({ _id: id })
           .then((user) => {
             if (user) {
-              resolve(user.articals);
+              let check = false;
+              user.articals.map((artical) => {
+                if (artical._id == product._id) {
+                  artical.amount = artical.amount + product.amount;
+                  check = true;
+                }
+              });
+              if (check === false) {
+                user.articals.push(product);
+              }
+              // console.log("BEVORE:", user);
+              user
+                .save()
+                .then((user) => {
+                  // console.log("END", user);
+                  resolve(user.articals);
+                })
+                .catch((err) => reject(err))
+                .catch((err) => reject(err));
             } else {
               reject("User not find");
             }

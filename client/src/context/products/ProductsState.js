@@ -60,7 +60,8 @@ const ProductsState = (props) => {
         .post("http://localhost:5000/auth/articals", data)
         .then((response) => {
           if (response.status === 200) {
-            dispatch({ type: GET_ALL_CART, payload: response.data });
+            console.log(response.data);
+            // dispatch({ type: GET_ALL_CART, payload: response.data });
           } else {
             errorToast(response.data);
           }
@@ -75,12 +76,15 @@ const ProductsState = (props) => {
   //ADD A ARTICEL TO CART
   const addArticelToCart = (product, token) => {
     let decoded = jwt_decode(token);
-    const data = { decoded, product };
+    product.amount = 1;
 
+    const data = { decoded, product };
     axios
       .post("http://localhost:5000/auth/articals/add", data)
       .then((response) => {
+        // console.log(response);
         if (response.status === 200) {
+          console.log("ADD_TO_CARD", response.data);
           dispatch({ type: ADD_TO_CART, payload: response.data });
           successToast("Added to your cart");
         } else {
