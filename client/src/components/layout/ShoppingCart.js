@@ -9,6 +9,7 @@ function ShoppingCart() {
     shoppingCart,
     getAllArticelsForCart,
     shoppingCartSlideToggle,
+    totalCost,
   } = productsContext;
 
   const authContext = useContext(AuthContext);
@@ -42,9 +43,9 @@ function ShoppingCart() {
         </ul>
         <div id="total">
           <span>Total cost: </span>
-          <span className="fl-r">$</span>
+          <span className="fl-r"> $</span>
           <span id="totalCost" className="fl-r">
-            0
+            {totalCost ? totalCost : 0}
           </span>
           <button className="buy-now btn">BUY NOW!</button>
         </div>

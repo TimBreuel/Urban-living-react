@@ -74,7 +74,7 @@ auth.post("/articals/add", (req, res) => {
 auth.post("/articals/remove", (req, res) => {
   if (req.body) {
     mongooseUserModule
-      .userArticalsRemove(req.body.decoded.id, req.body._id)
+      .userArticalsRemove(req.body.decoded.id, req.body.product._id)
       .then((data) => {
         res.json(data);
       })

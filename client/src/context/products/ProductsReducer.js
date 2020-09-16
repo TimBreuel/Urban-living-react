@@ -47,22 +47,25 @@ export default (state, action) => {
     case ADD_TO_CART:
       return {
         ...state,
-        shoppingCart: action.payload,
+        shoppingCart: action.payload.data,
         loading: false,
+        totalCost: action.payload.totalCost,
       };
     case GET_ALL_CART:
       return {
         ...state,
-        shoppingCart: action.payload,
+        shoppingCart: action.payload.data,
         loading: false,
+        totalCost: action.payload.totalCost,
       };
     case REMOVE_FROM_CART:
       return {
         ...state,
         shoppingCart: state.shoppingCart.filter(
-          (article) => article._id !== action.payload
+          (article) => article._id !== action.payload._id
         ),
         loading: false,
+        totalCost: state.totalCost - action.payload.price,
       };
     case MENU_SLIDE_TOGGLE:
       return {

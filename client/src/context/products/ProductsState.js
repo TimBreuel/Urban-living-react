@@ -24,6 +24,7 @@ const ProductsState = (props) => {
     menuSlideToggle: false,
     shoppingCartSlideToggle: false,
     loading: false,
+    totalCost: null,
   };
   const [state, dispatch] = useReducer(ProductsReducer, initalState);
 
@@ -60,7 +61,17 @@ const ProductsState = (props) => {
         .post("http://localhost:5000/auth/articals", data)
         .then((response) => {
           if (response.status === 200) {
-            dispatch({ type: GET_ALL_CART, payload: response.data });
+            let totalCost = 0;
+            response.data.forEach((artical) => {
+              let insideCost = 0;
+              insideCost = artical.amount * artical.price;
+              totalCost += insideCost;
+            });
+
+            dispatch({
+              type: GET_ALL_CART,
+              payload: { data: response.data, totalCost: totalCost },
+            });
           } else {
             errorToast(response.data);
           }
@@ -83,8 +94,16 @@ const ProductsState = (props) => {
       .then((response) => {
         // console.log(response);
         if (response.status === 200) {
-          console.log("ADD_TO_CARD", response.data);
-          dispatch({ type: ADD_TO_CART, payload: response.data });
+          let totalCost = 0;
+          response.data.forEach((artical) => {
+            let insideCost = 0;
+            insideCost = artical.amount * artical.price;
+            totalCost += insideCost;
+          });
+          dispatch({
+            type: ADD_TO_CART,
+            payload: { data: response.data, totalCost: totalCost },
+          });
           successToast("Added to your cart");
         } else {
           errorToast(response.data);
@@ -97,16 +116,17 @@ const ProductsState = (props) => {
 
   //////////////////////////////
   //REMOVE AN ARTICLE FROM CART
-  const removeArticelFromCart = (_id, token) => {
+  const removeArticelFromCart = (product, token) => {
     let decoded = jwt_decode(token);
-    const data = { decoded, _id };
+    const data = { decoded, product };
 
     axios
       .post("http://localhost:5000/auth/articals/remove", data)
       .then((response) => {
         if (response.status === 200) {
-          console.log(response.data);
-          dispatch({ type: REMOVE_FROM_CART, payload: _id });
+          // console.log("REMOVE:", response.data);
+
+          dispatch({ type: REMOVE_FROM_CART, payload: product });
           toast.warning("Removed artical from cart!");
         } else {
           errorToast("Something went wrong!");
@@ -158,6 +178,7 @@ const ProductsState = (props) => {
         menuSlideToggle: state.menuSlideToggle,
         shoppingCartSlideToggle: state.shoppingCartSlideToggle,
         loading: state.loading,
+        totalCost: state.totalCost,
         getAllProducts,
         filteredProducts,
         clearFilter,

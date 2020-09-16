@@ -20,7 +20,7 @@ export default function ShoppingCartItem({ product }) {
             {product.name}
             <i
               className="fas fa-times fl-r cart-remove"
-              onClick={() => removeCart(product._id)}
+              onClick={() => removeCart(product)}
             ></i>
           </div>
           <div className="cart-price-cost">
