@@ -60,8 +60,7 @@ const ProductsState = (props) => {
         .post("http://localhost:5000/auth/articals", data)
         .then((response) => {
           if (response.status === 200) {
-            console.log(response.data);
-            // dispatch({ type: GET_ALL_CART, payload: response.data });
+            dispatch({ type: GET_ALL_CART, payload: response.data });
           } else {
             errorToast(response.data);
           }

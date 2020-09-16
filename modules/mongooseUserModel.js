@@ -90,21 +90,20 @@ const userArticalsAdd = (id, product) => {
               let check = false;
               user.articals.map((artical) => {
                 if (artical._id == product._id) {
-                  artical.amount = artical.amount + product.amount;
+                  artical.amount = artical.amount + 1;
                   check = true;
                 }
               });
               if (check === false) {
                 user.articals.push(product);
               }
-              // console.log("BEVORE:", user);
+              console.log("BEVORE:", user);
               user
                 .save()
                 .then((user) => {
-                  // console.log("END", user);
+                  console.log("END", user);
                   resolve(user.articals);
                 })
-                .catch((err) => reject(err))
                 .catch((err) => reject(err));
             } else {
               reject("User not find");

@@ -6,15 +6,9 @@ import AuthContext from "../../context/auth/AuthContext";
 
 function Products({ headline }) {
   const productsContext = useContext(ProductsContext);
-  const {
-    products,
-    getAllProducts,
-    filtered,
-    setLoading,
-    getAllArticelsForCart,
-  } = productsContext;
+  const { products, getAllProducts, filtered, setLoading } = productsContext;
   const authContext = useContext(AuthContext);
-  const { checkLocalStorageAndLogin, user } = authContext;
+  const { checkLocalStorageAndLogin } = authContext;
 
   useEffect(() => {
     getAllProducts();
@@ -22,10 +16,6 @@ function Products({ headline }) {
     checkLocalStorageAndLogin();
     //eslint-disable-next-line
   }, []);
-  useEffect(() => {
-    getAllArticelsForCart(user);
-    //eslint-disable-next-line
-  }, [user]);
   return (
     <Fragment>
       <Headline txt="Our Products"></Headline>
