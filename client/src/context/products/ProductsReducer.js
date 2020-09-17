@@ -9,6 +9,7 @@ import {
   MENU_SLIDE_TOGGLE,
   SHOPPING_CART_TOGGLE,
   SET_LOADING,
+  SET_TOTAL,
 } from "../types";
 
 export default (state, action) => {
@@ -81,6 +82,16 @@ export default (state, action) => {
       return {
         ...state,
         loading: action.payload,
+      };
+    case SET_TOTAL:
+      return {
+        ...state,
+        shoppingCart: [],
+        filtered: null,
+        menuSlideToggle: false,
+        shoppingCartSlideToggle: false,
+        loading: false,
+        totalCost: null,
       };
 
     default:

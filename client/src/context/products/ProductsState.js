@@ -12,6 +12,7 @@ import {
   MENU_SLIDE_TOGGLE,
   SHOPPING_CART_TOGGLE,
   SET_LOADING,
+  SET_TOTAL,
 } from "../types";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
@@ -169,6 +170,11 @@ const ProductsState = (props) => {
     dispatch({ type: SET_LOADING, payload: boolean });
   };
 
+  ///////////
+  //SET TOTAL
+  const setTotal = () => {
+    dispatch({ type: SET_TOTAL });
+  };
   return (
     <ProductsContext.Provider
       value={{
@@ -190,6 +196,7 @@ const ProductsState = (props) => {
         successToast,
         errorToast,
         setLoading,
+        setTotal,
       }}
     >
       {props.children}
