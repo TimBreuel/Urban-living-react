@@ -9,12 +9,21 @@ auth.post("/login", (req, res) => {
     mongooseUserModule
       .loginUser(req.body.email, req.body.password)
       .then((user) => {
-        // console.log(user);
-        const token = authControler.createToken(user._id);
-        res.json({ token: token });
+        console.log("test", user);
+        if (user) {
+          // console.log(user);
+          const token = authControler.createToken(user._id);
+          res.json({ token: token });
+        }
       })
       .catch((err) => {
         console.log("ERR:", err);
+        if (err === "Email not found") {
+          res.json("Email not found");
+        }
+        if (err === "Password not match") {
+          res.json("Password not match");
+        }
       });
   } else {
     res.json(checkData);

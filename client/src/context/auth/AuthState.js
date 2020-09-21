@@ -49,10 +49,19 @@ const AuthState = (props) => {
     axios
       .post("http://localhost:5000/auth/login", data)
       .then((response) => {
+        console.log(response);
         if (response.status === 200) {
-          localStorage.setItem("token", response.data.token);
-          dispatch({ type: SIGN_IN, payload: response.data.token });
-          successAuthentication("Login succesfull");
+          if (response.data === "Email not found") {
+            errorAuthentication(response.data);
+          }
+          if (response.data === "Password not match") {
+            errorAuthentication(response.data);
+          }
+          if (response.data.token !== undefined) {
+            localStorage.setItem("token", response.data.token);
+            dispatch({ type: SIGN_IN, payload: response.data.token });
+            successAuthentication("Login succesfull");
+          }
         } else {
           errorAuthentication(response.data);
         }
