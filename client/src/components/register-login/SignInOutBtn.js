@@ -1,6 +1,6 @@
 import React, { Fragment, useContext } from "react";
 import AuthContext from "../../context/auth/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import ProductsContext from "../../context/products/ProductsContext";
 function SignInOutBtn() {
@@ -10,11 +10,14 @@ function SignInOutBtn() {
   //PRODUCT CONTEXT
   const productContext = useContext(ProductsContext);
   const { setTotal } = productContext;
+  //PUSH TO ROUTE
+  const history = useHistory();
 
   const signInAndOut = () => {
     if (authenticated) {
       signOut();
       setTotal();
+      history.push("/login");
     }
   };
   useEffect(() => {}, [authenticated, user]);

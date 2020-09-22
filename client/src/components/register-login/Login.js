@@ -2,10 +2,12 @@ import React, { Fragment, useState, useContext } from "react";
 import Headline from "../products/Headline";
 import validator from "validator";
 import AuthContext from "../../context/auth/AuthContext";
+import { useHistory } from "react-router-dom";
 
 function Login() {
   const authContext = useContext(AuthContext);
   const { errorAuthentication, loginUser } = authContext;
+  const history = useHistory();
 
   const [user, setUser] = useState({
     email: "",
@@ -22,6 +24,7 @@ function Login() {
     e.preventDefault();
     loginUser(user);
     setUser({ email: "", password: "" });
+    history.push("/", user);
   };
 
   const onBlur = (e) => {

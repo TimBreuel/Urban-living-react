@@ -31,6 +31,9 @@ const productSchema = new Schema({
     minlength: 5,
     maxlength: 400,
   },
+  amount: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("products", productSchema);

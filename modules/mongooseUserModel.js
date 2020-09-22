@@ -80,6 +80,8 @@ const userArticals = (id) => {
   });
 };
 
+//////////////////////
+//ADD ARTICAL TO CART
 const userArticalsAdd = (id, product) => {
   return new Promise((resolve, reject) => {
     connect()
@@ -88,7 +90,7 @@ const userArticalsAdd = (id, product) => {
           .then((user) => {
             if (user) {
               let check = false;
-              user.articals.map((artical) => {
+              user.articals.forEach((artical) => {
                 if (artical._id == product._id) {
                   artical.amount = artical.amount + 1;
                   check = true;
@@ -97,7 +99,7 @@ const userArticalsAdd = (id, product) => {
               if (check === false) {
                 user.articals.push(product);
               }
-              console.log("BEVORE:", user);
+              // console.log("BEVORE:", user);
               user
                 .save()
                 .then((user) => {
