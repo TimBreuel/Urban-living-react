@@ -90,20 +90,21 @@ const userArticalsAdd = (id, product) => {
           .then((user) => {
             if (user) {
               let check = false;
-              user.articals.forEach((artical) => {
+              const newArr = [...user.articals];
+              newArr.forEach((artical) => {
                 if (artical._id == product._id) {
                   artical.amount = artical.amount + 1;
                   check = true;
                 }
               });
               if (check === false) {
-                user.articals.push(product);
+                newArr.push(product);
               }
-              // console.log("BEVORE:", user);
-              user
+              user.articals = newArr;
+              const newUser = new USER(user);
+              newUser
                 .save()
                 .then((user) => {
-                  console.log("END", user);
                   resolve(user.articals);
                 })
                 .catch((err) => reject(err));
