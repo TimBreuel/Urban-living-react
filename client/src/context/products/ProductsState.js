@@ -98,7 +98,8 @@ const ProductsState = (props) => {
           let totalCost = 0;
           response.data.forEach((artical) => {
             let insideCost = 0;
-            insideCost = artical.amount * artical.price;
+            let originalPrice = artical.price / artical.amount;
+            insideCost = artical.amount * originalPrice;
             totalCost += insideCost;
           });
           dispatch({

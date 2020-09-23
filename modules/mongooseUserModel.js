@@ -91,9 +91,12 @@ const userArticalsAdd = (id, product) => {
             if (user) {
               let check = false;
               const newArr = [...user.articals];
+
               newArr.forEach((artical) => {
                 if (artical._id == product._id) {
+                  let originalPrice = artical.price / artical.amount;
                   artical.amount = artical.amount + 1;
+                  artical.price = artical.amount * originalPrice;
                   check = true;
                 }
               });
