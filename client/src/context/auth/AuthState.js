@@ -28,7 +28,7 @@ const AuthState = (props) => {
   const registerUser = (user) => {
     const data = user;
     axios
-      .post("http://localhost:5000/auth/register", data)
+      .post("/auth/register", data)
       .then((response) => {
         if (response.data.token) {
           successAuthentication("Registration succesfull");
@@ -49,7 +49,7 @@ const AuthState = (props) => {
   const loginUser = (user) => {
     const data = user;
     axios
-      .post("http://localhost:5000/auth/login", data)
+      .post("/auth/login", data)
       .then((response) => {
         console.log(response);
         if (response.status === 200) {

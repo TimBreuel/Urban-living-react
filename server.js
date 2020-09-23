@@ -4,6 +4,7 @@ const app = express();
 const productsRoute = require("./routes/productsRoute");
 const authRoute = require("./routes/authRoute");
 const cookieParser = require("cookie-parser");
+const path = require("path");
 //////////////////////
 //MIDDLEWARE FUNCTIONS
 app.use(cors());
@@ -13,11 +14,11 @@ app.use("/products", productsRoute);
 app.use("/auth", authRoute);
 app.use(cookieParser());
 
-/////////////
-//ROUTE HOME
-app.get("/", (req, res) => {
-  res.send("Hello Urban living react home...");
-});
+// /////////////
+// //ROUTE HOME
+// app.get("/", (req, res) => {
+//   res.send("Hello Urban living react home...");
+// });
 
 //SERVE static assets in Production
 if (process.env.NODE_ENV === "production") {

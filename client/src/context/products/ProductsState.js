@@ -35,7 +35,7 @@ const ProductsState = (props) => {
   //GET ALL PRODUCTS
   const getAllProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/products");
+      const res = await axios.get("/products");
       dispatch({ type: GET_PRODUCTS, payload: res.data });
     } catch (error) {
       errorToast("Something went wrong!");
@@ -61,7 +61,7 @@ const ProductsState = (props) => {
       let decoded = jwt_decode(token);
       const data = { decoded };
       axios
-        .post("http://localhost:5000/auth/articals", data)
+        .post("/auth/articals", data)
         .then((response) => {
           if (response.status === 200) {
             let totalCost = 0;
@@ -94,7 +94,7 @@ const ProductsState = (props) => {
 
     const data = { decoded, product };
     axios
-      .post("http://localhost:5000/auth/articals/add", data)
+      .post("/auth/articals/add", data)
       .then((response) => {
         // console.log(response);
         if (response.status === 200) {
@@ -126,7 +126,7 @@ const ProductsState = (props) => {
     const data = { decoded, product };
 
     axios
-      .post("http://localhost:5000/auth/articals/remove", data)
+      .post("/auth/articals/remove", data)
       .then((response) => {
         if (response.status === 200) {
           // console.log("REMOVE:", response.data);
