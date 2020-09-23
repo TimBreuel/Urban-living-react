@@ -1,8 +1,13 @@
 import React, { Fragment, useContext } from "react";
 import ProductsContext from "../../context/products/ProductsContext";
 function NavigationBtn() {
+  //////////////////////
+  //USE PRODUCT CONTEXT
   const productsContext = useContext(ProductsContext);
   const { menuSlideToggle, menuSlideToggleFn } = productsContext;
+
+  ////////////////////
+  //SLIDE MENU TOGGLE
   const slideMenu = () => {
     if (menuSlideToggle) {
       menuSlideToggleFn(false);

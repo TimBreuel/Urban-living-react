@@ -4,24 +4,36 @@ import ProductsContext from "../../context/products/ProductsContext";
 import AuthContext from "../../context/auth/AuthContext";
 
 function ProductItem({ product }) {
+  //////////////////////
+  //USE PRODUCT CONTEXT
   const productsContext = useContext(ProductsContext);
   const { addArticelToCart, setLoading, errorToast } = productsContext;
 
+  ///////////////////
+  //USE AUTH CONTEXT
   const authContext = useContext(AuthContext);
   const { user } = authContext;
 
+  ////////////
+  //USE STATE
   const [details, setDetails] = useState(false);
   const [success, setSuccess] = useState(false);
 
   const { imageS, name, price } = product;
 
+  ///////////////////////
+  //ON CLICK SEE DETAILS
   const handleClickDetails = () => {
     setDetails(true);
   };
+  /////////////////////////
+  //ON CLICK CLOSE DETAILS
   const handleClickDetailsBack = () => {
     setDetails(false);
   };
 
+  ///////////////////////
+  //ON CLICK ADD TO CART
   const handleClickToCart = (product) => {
     if (user) {
       setLoading(true);

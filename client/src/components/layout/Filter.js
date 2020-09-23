@@ -3,9 +3,12 @@ import { useContext, useRef, useEffect } from "react";
 import ProductsContext from "../../context/products/ProductsContext";
 
 function Filter() {
+  /////////////////////
+  //USE PRODUCT CONTEXT
   const productsContext = useContext(ProductsContext);
   const { filtered, filteredProducts, clearFilter } = productsContext;
 
+  //USE REF FOR INPUT SEARCH
   const text = useRef("");
   useEffect(() => {
     if (filtered === null) {
@@ -13,6 +16,8 @@ function Filter() {
     }
   });
 
+  ////////////////////////////
+  //ON CHNAGE FILTER OR CLEAR
   const onChange = (e) => {
     if (text.current.value !== "") {
       filteredProducts(e.target.value);

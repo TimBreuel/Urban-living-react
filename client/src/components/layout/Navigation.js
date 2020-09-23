@@ -9,6 +9,8 @@ import ProductsContext from "../../context/products/ProductsContext";
 import SignInOutBtn from "../register-login/SignInOutBtn";
 import { Link } from "react-router-dom";
 function Navigation() {
+  //////////////////////
+  //USE PRODUCT CONTEXT
   const productsContext = useContext(ProductsContext);
   const { loading, clearFilter } = productsContext;
 

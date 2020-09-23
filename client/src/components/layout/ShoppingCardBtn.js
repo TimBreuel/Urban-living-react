@@ -1,11 +1,16 @@
 import React, { Fragment, useContext } from "react";
 import ProductsContext from "../../context/products/ProductsContext";
 function ShoppingCardBtn() {
+  //////////////////////
+  //USE PRODUCT CONTEXT
   const productsContext = useContext(ProductsContext);
   const {
     shoppingCartSlideToggleFn,
     shoppingCartSlideToggle,
   } = productsContext;
+
+  ///////////////////////////
+  //SHOPPING CARD SLIDE BACK
   const ShoppingCardSlide = () => {
     if (shoppingCartSlideToggle) {
       shoppingCartSlideToggleFn(false);

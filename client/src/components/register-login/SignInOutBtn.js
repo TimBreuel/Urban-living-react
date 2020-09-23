@@ -4,15 +4,19 @@ import { Link, useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import ProductsContext from "../../context/products/ProductsContext";
 function SignInOutBtn() {
+  ///////////////
   //AUTH CONTEXT
   const authContext = useContext(AuthContext);
   const { authenticated, signOut, user } = authContext;
+  //////////////////
   //PRODUCT CONTEXT
   const productContext = useContext(ProductsContext);
   const { setTotal } = productContext;
   //PUSH TO ROUTE
   const history = useHistory();
 
+  ///////////////////////
+  //CHECK SIGN IN OR OUT
   const signInAndOut = () => {
     if (authenticated) {
       signOut();
@@ -20,6 +24,9 @@ function SignInOutBtn() {
       history.push("/login");
     }
   };
+
+  //////////////////////////////////////////////
+  //USE EFFECT IS AUSTHENTICATED OR USER CHANGE
   useEffect(() => {}, [authenticated, user]);
 
   return (

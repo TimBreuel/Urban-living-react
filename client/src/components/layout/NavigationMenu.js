@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import ProductsContext from "../../context/products/ProductsContext";
 
 function NavigationMenu() {
+  //////////////////////
+  //USE PRODUCT CONTEXT
   const productsContext = useContext(ProductsContext);
   const {
     filteredProducts,
@@ -10,11 +12,16 @@ function NavigationMenu() {
     menuSlideToggle,
     menuSlideToggleFn,
   } = productsContext;
+
+  ///////////////////////////////
+  //CLEAR FILTER AND TOGGLE MENU
   const onClearFilter = () => {
     clearFilter();
     menuSlideToggleFn(false);
   };
 
+  ///////////////////////////////
+  //FILTER PRODUCTS AND TOGGLE MENU
   const onFilterdProducts = (keyword) => {
     filteredProducts(keyword);
     menuSlideToggleFn(false);

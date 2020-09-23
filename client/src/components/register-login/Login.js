@@ -5,10 +5,14 @@ import AuthContext from "../../context/auth/AuthContext";
 import { useHistory } from "react-router-dom";
 
 function Login() {
+  ///////////////
+  //AUTH CONTEXT
   const authContext = useContext(AuthContext);
   const { errorAuthentication, loginUser } = authContext;
   const history = useHistory();
 
+  ///////////
+  //USE STATE
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -16,10 +20,14 @@ function Login() {
   const [validation, setValidation] = useState(true);
   const { email, password } = user;
 
+  ///////////////////
+  //ON CHANGE INPUTS
   const onChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  ////////////
+  //ON LOGIN
   const onLogIn = (e) => {
     e.preventDefault();
     loginUser(user);
@@ -27,6 +35,8 @@ function Login() {
     history.push("/", user);
   };
 
+  //////////////////////
+  //ON BLURE VALIDATION
   const onBlur = (e) => {
     e.preventDefault();
 
@@ -58,6 +68,8 @@ function Login() {
     }
   };
 
+  /////////////////////
+  //ON SUBMIT THE FORM
   const onSubmit = (e) => {
     e.preventDefault();
     if (validation) {

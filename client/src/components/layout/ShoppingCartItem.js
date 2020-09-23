@@ -3,10 +3,17 @@ import ProductsContext from "../../context/products/ProductsContext";
 import AuthContext from "../../context/auth/AuthContext";
 
 export default function ShoppingCartItem({ product }) {
+  //////////////////////
+  //USE PRODUCT CONTEXT
   const productsContext = useContext(ProductsContext);
   const { removeArticelFromCart, setLoading } = productsContext;
+  //////////////////////
+  //USE AUTH CONTEXT
   const authContext = useContext(AuthContext);
   const { user } = authContext;
+
+  ///////////////////////////
+  //REMOVE ARTICAL FROM CART
   const removeCart = (_id) => {
     removeArticelFromCart(_id, user);
     setLoading(true);

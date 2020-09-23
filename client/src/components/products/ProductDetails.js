@@ -1,12 +1,11 @@
 import React from "react";
 function ProductDetails({ product, renderBack, addToCardProp }) {
+  ///////////////////////////
+  //REMOVE DETAILS COMPONENT
   const handleRemove = () => {
     renderBack();
   };
 
-  // const handleAddToCart = () => {
-  //   addToCardProp(product);
-  // };
   return (
     <div className="details__bg">
       <div className="details__bg--white">

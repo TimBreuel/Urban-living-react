@@ -5,11 +5,16 @@ import ProductItems from "./ProductItems";
 import AuthContext from "../../context/auth/AuthContext";
 
 function Products({ headline }) {
+  //////////////////////
+  //USE PRODUCT CONTEXT
   const productsContext = useContext(ProductsContext);
   const { products, getAllProducts, filtered, setLoading } = productsContext;
+  ///////////////////
+  //USE AUTH CONTEXT
   const authContext = useContext(AuthContext);
   const { checkLocalStorageAndLogin } = authContext;
 
+  //USE EFFECT ONLY ONE TIME // GET ALL PRODUCTS // CHECK LOCAL STORAGE
   useEffect(() => {
     getAllProducts();
     setLoading(true);

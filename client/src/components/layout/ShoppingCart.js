@@ -4,6 +4,8 @@ import ShoppingCartItem from "./ShoppingCartItem";
 import AuthContext from "../../context/auth/AuthContext";
 
 function ShoppingCart() {
+  //////////////////////
+  //USE PRODUCT CONTEXT
   const productsContext = useContext(ProductsContext);
   const {
     shoppingCart,
@@ -12,8 +14,13 @@ function ShoppingCart() {
     totalCost,
   } = productsContext;
 
+  ///////////////////
+  //USE AUTH CONTEXT
   const authContext = useContext(AuthContext);
   const { user } = authContext;
+
+  ///////////////////////////////////////////////////////
+  //USE EFFECT GET ALL ARTICALS FOR USER IF STATE CHANGE
   useEffect(() => {
     getAllArticelsForCart(user);
     //eslint-disable-next-line
