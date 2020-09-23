@@ -1,6 +1,5 @@
 const validator = require("validator");
 const jwt = require("jsonwebtoken");
-const jwt_decode = require("jwt-decode");
 
 /////////////////////
 //CHECK THE REQ BODY
@@ -101,6 +100,8 @@ const authValidation = (user) => {
   }
 };
 
+///////////////////
+//CREATE JWT TOKEN
 const createToken = (id) => {
   return jwt.sign({ id }, "urban living secret", {
     expiresIn: 3600,

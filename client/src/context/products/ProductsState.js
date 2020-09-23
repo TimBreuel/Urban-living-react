@@ -17,6 +17,8 @@ import {
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
+///////////////
+//INITIAL STATE
 const ProductsState = (props) => {
   const initalState = {
     products: [],
@@ -65,7 +67,8 @@ const ProductsState = (props) => {
             let totalCost = 0;
             response.data.forEach((artical) => {
               let insideCost = 0;
-              insideCost = artical.amount * artical.price;
+              let originalPrice = artical.price / artical.amount;
+              insideCost = artical.amount * originalPrice;
               totalCost += insideCost;
             });
 

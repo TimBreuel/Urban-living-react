@@ -10,7 +10,8 @@ import SignInOutBtn from "../register-login/SignInOutBtn";
 import { Link } from "react-router-dom";
 function Navigation() {
   const productsContext = useContext(ProductsContext);
-  const { loading } = productsContext;
+  const { loading, clearFilter } = productsContext;
+
   return (
     <Fragment>
       {loading && (
@@ -28,7 +29,7 @@ function Navigation() {
         <NavigationBtn></NavigationBtn>
         <Filter></Filter>
         <div className="logo">
-          <Link to="/">
+          <Link to="/" onClick={() => clearFilter()}>
             <img src={logo} alt="" />
           </Link>
         </div>

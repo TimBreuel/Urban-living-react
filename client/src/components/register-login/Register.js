@@ -2,6 +2,7 @@ import React, { Fragment, useState, useContext } from "react";
 import Headline from "../products/Headline";
 import validator from "validator";
 import AuthContext from "../../context/auth/AuthContext";
+import { useHistory } from "react-router-dom";
 
 function Register() {
   /////////////////////////
@@ -22,6 +23,7 @@ function Register() {
     password: "",
     repassword: "",
   });
+  const history = useHistory();
   const [validation, setValidation] = useState(true);
   //DESTRUCTURING USER STATE
   const {
@@ -172,6 +174,7 @@ function Register() {
           password: "",
           repassword: "",
         });
+        history.push("/");
       } else {
         errorAuthentication("Some field is wrong, validation failed!");
       }

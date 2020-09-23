@@ -11,6 +11,8 @@ import {
 } from "../types";
 import axios from "axios";
 
+////////////////
+//INITIAL STATE
 const AuthState = (props) => {
   const initalState = {
     error: null,
